@@ -120,6 +120,8 @@ Checks so far: baseline **87 passed in 5.52s**; new scoring core **22 passed in 
 
 **Documentation and limits:** updated README, context, decisions and `docs/PROFESSOR_UPDATE_2026-11-10.md` to include demonstrated scoring and precise limitations. Saved approximately 304 KiB of experiment evidence. Scoring uses provisional scope and urgency-as-impact proxies; effort/grouping errors and missing inputs constrain comparisons. All baselines share the same AI groups; this is not a controlled human-workflow comparison. No claim of ranking correctness, business improvement or participant observations. No known failing tests. Stored accept/override decisions, durable hosted persistence, cloud/Linux verification, broader data robustness and the final report remain pending.
 
+**Saved checkpoint:** commit `7d61d60ef3a8f822c91c89298333af0b445c7b42` (`Add auditable scoring and reproducible ranking comparisons`) succeeded on `codex/semantic-milestone`; staged whitespace checks passed. Nothing was pushed or published. Supplied academic source documents remain untracked and unchanged.
+
 ## Recommended next task
 
 Complete stored human review and deploy the smallest end-to-end workflow.
