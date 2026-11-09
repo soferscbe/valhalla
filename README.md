@@ -2,7 +2,7 @@
 
 An MBA-Tech research application for explainable, evidence-based SaaS feature prioritisation.
 
-**Current status (9 November 2026):** upload, validation, seeded synthetic datasets, local semantic grouping and transparent scoring work. The app supports strategy weights, score contributions, vote/fixed-weight/RICE-style comparisons, segment coverage and exports. The full suite passes **132 tests** (one PostgreSQL integration test remains skipped locally), and an actual 1,500-record ranking comparison is saved. Local accept/defer/override history with evidence snapshots is implemented and tested; cloud deployment is **not yet verified**; the full approved project remains incomplete. See `docs/SEMANTIC_RESULTS.md`, `docs/SCORING_RESULTS.md` and the updated `docs/PROFESSOR_UPDATE_2026-11-10.md`.
+**Current status (9 November 2026):** upload, validation, seeded synthetic datasets, local semantic grouping and transparent scoring work. The app supports strategy weights, score contributions, vote/fixed-weight/RICE-style comparisons, segment coverage and exports. The full suite passes **133 tests on Linux with PostgreSQL** (locally: 132 passed, one PostgreSQL skip), and an actual 1,500-record ranking comparison is saved. Local accept/defer/override history with evidence snapshots is implemented and tested; cloud deployment is **not yet verified**; the full approved project remains incomplete. See `docs/SEMANTIC_RESULTS.md`, `docs/SCORING_RESULTS.md` and the updated `docs/PROFESSOR_UPDATE_2026-11-10.md`.
 
 Read `AGENTS.md`, `PROJECT_CONTEXT.md`, `PROGRESS.md` and `DECISIONS.md` before continuing development.
 
@@ -21,7 +21,7 @@ Open the local address printed by Streamlit, normally http://127.0.0.1:8501. No 
 
 On this workstation, the environment was created with the bundled Python 3.12.14 at `/Users/sofers-4887/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/bin/python3`; system Python is 3.9.6. The existing `.venv` is local and not portable. Recreate it with Python 3.12 on another machine.
 
-`requirements.txt` pins the validated environment, including test dependencies. Main packages: Streamlit 1.66.1, pandas 2.2.3, NumPy 2.3.5, openpyxl 3.1.5, pytest 9.2.0, sentence-transformers 6.2.0, scikit-learn 1.9.1, transformers 5.22.1 and Torch 2.15.0. A fresh installation on Linux/cloud has not yet been verified.
+`requirements.txt` pins the validated environment, including test dependencies. Main packages: Streamlit 1.66.1, pandas 2.2.3, NumPy 2.3.5, openpyxl 3.1.5, pytest 9.2.0, sentence-transformers 6.2.0, scikit-learn 1.9.1, transformers 5.22.1 and Torch 2.15.0. A fresh Ubuntu 26.04 / Python 3.12.16 installation using the deployment CPU wheel passed all 133 tests, including real-model inference and PostgreSQL, on 9 November. [Verified CI run](https://github.com/soferscbe/valhalla/actions/runs/42658653667). Streamlit hosting remains unverified.
 
 Prepare the model before a demonstration:
 
@@ -135,7 +135,7 @@ After scoring, choose **Explain a priority**, then scroll to **Record a human re
 
 Local storage defaults to ignored `data/private/reviews.sqlite3`; `PRODUCTLENS_REVIEW_DB` can select a different local file. Keep the file and recovery key to restore history. JSON export includes evidence and reasons, but no recovery key. Cloud mode instead requires a PostgreSQL URL with TLS, configured only in server-side secrets.
 
-GitHub source destination: [soferscbe/valhalla](https://github.com/soferscbe/valhalla). The repository was initially empty and public; publication/CI status is recorded in `PROGRESS.md`. It is not the application URL.
+Published source: [soferscbe/valhalla](https://github.com/soferscbe/valhalla), branch `main`. The original project history and initial GitHub README commit are preserved. Linux/PostgreSQL CI passed all 133 tests; details are recorded in `PROGRESS.md`. This repository link is not the application URL.
 
 Cloud entrypoint: **`deployment/streamlit_app.py`**, Python **3.12**, with adjacent `deployment/requirements.txt`. The same application runs with local review-storage fallback disabled. Linux CPU dependency resolution passed, but hosted execution and PostgreSQL persistence remain unverified. No public application URL exists yet. Follow [the concrete deployment handoff](docs/DEPLOYMENT.md) for secrets, checks and the restart test.
 

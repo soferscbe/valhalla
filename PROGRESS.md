@@ -1,6 +1,6 @@
 # ProductLens AI progress
 
-**Current verified status — 9 November 2026:** local upload → validation → real semantic grouping → deterministic scoring → saved human review works. Latest full suite: **132 passed, 1 skipped** (real PostgreSQL integration requires a configured test database). Local persistence/recovery and browser review save are verified. Linux CPU dependency resolution and cloud entrypoint are prepared; actual hosted operation, PostgreSQL persistence, broader data robustness and final report remain incomplete. Deadline is 15 November.
+**Current verified status — 9 November 2026:** upload → validation → real semantic grouping → deterministic scoring → saved human review works locally. Source and original Git history are published at https://github.com/soferscbe/valhalla. Fresh Linux/Python 3.12 installation, pinned model and PostgreSQL integration passed **all 133 tests with no skips**; [main CI run](https://github.com/soferscbe/valhalla/actions/runs/42658653667). Local suite: 132 passed, 1 PostgreSQL skip. No hosted application URL or managed database is configured; hosted persistence, broader data robustness and final report remain incomplete. Deadline is 15 November.
 
 ## 5 November 2026 — project memory established before implementation
 
@@ -146,13 +146,27 @@ GitHub connection verified for `soferscbe`; the initial accessible repository li
 
 The student explicitly approved public publication of the 75-file manifest and existing Git history to `soferscbe/valhalla`. That resolves the earlier publication-approval gate; do not ask for the same permission again. Added `origin` pointing to `https://github.com/soferscbe/valhalla.git`. The approved `GIT_TERMINAL_PROMPT=0 git push -u origin HEAD:main` failed with exit 128 because command-line Git has no GitHub username/credential configured. No files or commits were uploaded. The connected GitHub plugin can inspect the repository, but does not supply credentials to the local Git process. Prepare official GitHub CLI authentication to preserve the existing commit history rather than replacing it with reconstructed API commits. Never ask for passwords or access tokens in chat. The official GitHub CLI release API/download attempt timed out at the proxy; no executable was installed. A repository-side import through the already-authorised GitHub integration is being prepared to transfer the exact approved Git bundle and verify its original commit IDs. Any temporary import workflow must check the bundle digest and expected remote head, preserve the source branch, and never overwrite unrelated remote updates. Publication and CI remain unverified until their actual results are recorded.
 
+## 9 November 2026 — source published with original history preserved
+
+Published the explicitly approved 75-file checkpoint to public `https://github.com/soferscbe/valhalla`. Main commit `0a0b418853d733af4b560b69f15f8e6b54b5a7b0` has parents comprising the student's initial README commit `91379afe7d0c0b49015e0d22cc34ac64a418f7a0` and original project checkpoint `e4211a46ffcc04b5084418b82333a3cfedb063e1`. All 75 remote file paths, modes and blob hashes exactly match the approved checkpoint; tree SHA `218799dc286ffd26dfd4faf11d121d0bc9d144d3`. The earlier description of an empty repository was based on size metadata; inspecting branches revealed the initial README, which was preserved in history. Main now has nine commits. Original checkpoint also remains on `codex/semantic-milestone`.
+
+Transfer evidence: uploaded a complete Git bundle with SHA-256 `381afe0c33e2cd167d17c6f18ea36c76ef5e26fc885becb24950b5156dc177a0` on the task-owned `codex/import-approved-history` branch. Run `42658329577` verified the digest and complete history, then its runner token was denied permission to introduce `.github/workflows/tests.yml`; no tests ran in that attempt. Git objects had arrived and were verified through the API. The already-authorised GitHub integration successfully created the original source branch and the two-parent publication commit, updating main with an expected-head check and no force. No token permissions were changed. Temporary import branch remains separate from main; its workflow is not part of the application tree.
+
+`git fetch origin` subsequently succeeded, and `git merge --ff-only origin/main` synchronised the local checkout without changing file contents. Native Git push credentials remain unconfigured; connected GitHub operations work. Regular Linux/PostgreSQL CI started on main: https://github.com/soferscbe/valhalla/actions/runs/42658653667. At this milestone it is still running; no success is claimed yet. Cloud hosting/database access and live app verification remain pending.
+
+## 9 November 2026 — Linux and PostgreSQL verification passed
+
+Regular main workflow run `42658653667`, job `129303916147`, completed successfully at 16:51:44 UTC on source commit `0a0b418853d733af4b560b69f15f8e6b54b5a7b0`. Observed job logs: Ubuntu 26.04, CPython 3.12.16, Torch 2.15.0+cpu, psycopg/psycopg-binary 3.3.8 and disposable PostgreSQL 17.11. Fresh `pip install -r deployment/requirements.txt` succeeded; `pip check` reported no broken requirements; the pinned model preparation succeeded. Full `python -m pytest -q` with offline mode, real-model tests and a test PostgreSQL URL returned **133 passed in 23.39s**, no skips. Source-branch run `42658599667` also succeeded. Logs retained locally under ignored `tmp/`; canonical public evidence: https://github.com/soferscbe/valhalla/actions/runs/42658653667.
+
+The previously skipped PostgreSQL round trip now ran successfully. This verifies the adapter against a disposable database, not managed-service TLS, hosted browser recovery or production durability. Local/browser evidence and frozen research results were not changed. The complete ranking experiment was not rerun on Linux, so bit-for-bit cross-platform research equivalence is not claimed. Updated README, project context, publication manifest, deployment guide and professor briefing with these boundaries. No further application code changes or unnecessary repeat tests were made.
+
 ## Recommended next task
 
-Publish the tested checkpoint to the supplied repository, run Linux/PostgreSQL CI and verify the hosted workflow.
+Configure Streamlit hosting and a dedicated PostgreSQL database, then verify the live workflow.
 
 Acceptance checks:
 
-1. Preserve existing remote files/history; publish the verified source and record the actual branch/commit. Keep academic source documents, model cache, secrets and local reviews out of the upload.
-2. Inspect an actual GitHub Actions result and resolve any Linux/model/PostgreSQL test failures. Dependency resolution alone does not satisfy this check.
-3. Configure Streamlit Community Cloud with `deployment/streamlit_app.py`, Python 3.12 and a dedicated TLS PostgreSQL database via private secrets; do not fall back to ephemeral local review files.
-4. Record the live URL and verify upload → grouping → scoring → saved review, cross-workspace isolation and restore after hosted restart. If access remains unavailable, record the exact unmet requirement without claiming deployment.
+1. Establish the student's Streamlit Community Cloud and PostgreSQL provider access; enter credentials only in private secrets, never chat or Git. Account readiness has been asked and is awaiting the student's reply.
+2. Deploy `soferscbe/valhalla`, branch `main`, entrypoint `deployment/streamlit_app.py`, Python 3.12, with a dedicated TLS PostgreSQL connection; verify model loading and cloud mode.
+3. Record the live URL and verify upload → grouping → scoring → saved review, workspace isolation and recovery after a hosted restart. No SQLite fallback is permitted.
+4. Update the professor briefing and progress with actual hosted results and remaining limitations. Until these checks pass, describe the app as locally working and Linux/PG tested, not deployed.

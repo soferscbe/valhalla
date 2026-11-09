@@ -10,7 +10,7 @@ Prepared on 9 November 2026 for discussion on **10 November 2026**. Review and a
 
 “The project now has a working local prototype that uploads and validates feedback, groups related requests using a pinned sentence-embedding model, and lets me inspect the original evidence and distinct customers behind each group. It now also calculates transparent priorities, shows score contributions, and lets me change strategy weights and compare baselines. I have reproducible synthetic datasets with 500 and 1,500 records. I have also completed an initial held-out evaluation of the semantic grouping component, with settings selected only on tuning data.
 
-“The results show both useful matches and clear limitations: duplicate links have high precision in this synthetic test, but many paraphrases are missed and broad groups sometimes combine different needs. I have retained the errors and source evidence rather than treating the AI output as authoritative. The scoring engine and an initial 1,500-record ranking comparison now work locally. Some candidates remain unranked because their inputs are incomplete. Stored human decisions now work locally with reasons and exact evidence snapshots; cloud deployment is still pending. My immediate priority is completing and deploying that workflow, followed by further robustness checks and the report.”
+“The results show both useful matches and clear limitations: duplicate links have high precision in this synthetic test, but many paraphrases are missed and broad groups sometimes combine different needs. I have retained the errors and source evidence rather than treating the AI output as authoritative. The scoring engine and an initial 1,500-record ranking comparison now work locally. Some candidates remain unranked because their inputs are incomplete. Stored human decisions now work locally with reasons and exact evidence snapshots. The source is published on GitHub and all 133 tests pass on Linux with PostgreSQL; cloud deployment is still pending. My immediate priority is completing and deploying that workflow, followed by further robustness checks and the report.”
 
 ## What can be demonstrated now
 
@@ -21,7 +21,8 @@ Prepared on 9 November 2026 for discussion on **10 November 2026**. Review and a
 | Semantic grouping | Real MiniLM embeddings running locally, broad opportunities and stricter candidate duplicates |
 | Explainability at grouping stage | Original requests, representative source sentence, extracted terms, request counts and distinct customers |
 | Research controls | Whole request families and customer accounts separated between tuning and evaluation; frozen configuration and source/model hashes |
-| Automated verification | 132 tests passed on 9 November, including real-model upload → grouping → scoring → saved review; one PostgreSQL integration test remains skipped locally |
+| Automated verification | All 133 tests passed on Linux with real-model inference and PostgreSQL on 9 November; locally 132 passed and the PostgreSQL test is skipped |
+| Published source | [GitHub repository](https://github.com/soferscbe/valhalla), original history preserved; [successful CI](https://github.com/soferscbe/valhalla/actions/runs/42658653667) |
 | Scoring and strategy simulation | Working locally: account deduplication, provisional effort, configurable weights, factor contributions and exports |
 | Vote/weighted/RICE-style ranking comparison | Initial 1,500-record descriptive run saved, with defined denominators and weight sensitivity |
 | Accept/defer/override history | Working locally with reasons, immutable snapshots, private recovery keys and restart tests; hosted persistence unverified |

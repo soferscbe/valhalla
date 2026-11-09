@@ -1,12 +1,12 @@
 # Deployment handoff — 9 November 2026
 
-**Status:** locally tested workflow and prepared cloud configuration. No public application URL or hosted persistence has been verified. GitHub repository supplied by the student: https://github.com/soferscbe/valhalla (verified accessible and public, initially empty).
+**Status:** source published on `main`; fresh Linux installation and all 133 tests passed, including real-model inference and PostgreSQL. [Verified run](https://github.com/soferscbe/valhalla/actions/runs/42658653667), source commit `0a0b418853d733af4b560b69f15f8e6b54b5a7b0`. No public application URL or hosted persistence has been verified. GitHub repository: https://github.com/soferscbe/valhalla (public; initial README and original project history preserved).
 
 ## Source and entrypoint
 
 For Streamlit Community Cloud, select the repository above, the branch containing the verified checkpoint, **`deployment/streamlit_app.py`**, and **Python 3.12**. This entrypoint runs the same application while enforcing cloud storage mode. Its adjacent `deployment/requirements.txt` preserves the root research pins, selects the official hash-pinned Linux x86_64 CPU PyTorch wheel, and adds psycopg 3.3.8. The root `app.py` remains the local entrypoint.
 
-A cross-platform pip dry-run resolved **72 packages** for Linux x86_64/Python 3.12 with no NVIDIA dependencies. Receipt: `deployment/linux_dependency_receipt.json`. This is dependency resolution, **not execution on Linux**. The local model's immutable revision and grouping thresholds are unchanged. The CPU build's platform suffix differs from the measured macOS environment; validate its behavior before claiming cross-platform equivalence.
+A cross-platform pip dry-run initially resolved **72 packages** for Linux x86_64/Python 3.12 with no NVIDIA dependencies; receipt: `deployment/linux_dependency_receipt.json`. Subsequently, GitHub Actions installed the environment on Ubuntu 26.04 / Python 3.12.16, passed `pip check`, prepared the pinned model and passed **133 tests in 23.39s** against PostgreSQL 17.11 with Torch 2.15.0+cpu and psycopg 3.3.8. The local model revision and grouping thresholds are unchanged. Passing tests does not establish bit-for-bit equivalence of every saved macOS research result; the full ranking experiment was not rerun on Linux.
 
 ## Durable reviews
 
@@ -24,7 +24,7 @@ Review workspace recovery keys isolate app queries but are bearer secrets, not a
 
 ## Automated verification
 
-`.github/workflows/tests.yml` prepares Python 3.12/Linux CPU dependencies, downloads the pinned model and runs the full suite against a disposable PostgreSQL 17 service. Its database password is a test-only constant for an isolated runner, not a production credential. The workflow has read-only repository permissions. It was parsed locally but is not marked successful until an actual GitHub Actions run completes.
+`.github/workflows/tests.yml` prepares Python 3.12/Linux CPU dependencies, downloads the pinned model and runs the full suite against a disposable PostgreSQL 17 service. Its database password is a test-only constant for an isolated runner, not a production credential. The workflow has read-only repository permissions. Main run `42658653667` completed successfully on 9 November 2026 with **133 passed and no skips**; job `129303916147`. A separate source-branch run also succeeded. The earlier temporary import run failed at workflow-write permission before tests; it is not the application CI result.
 
 Local checks:
 

@@ -1,12 +1,12 @@
-# Proposed GitHub publication
+# Approved GitHub publication
 
-Destination: `https://github.com/soferscbe/valhalla`, currently public. No source was uploaded.
+Destination: `https://github.com/soferscbe/valhalla`, public. The approved checkpoint was published on 9 November 2026 as main commit `0a0b418853d733af4b560b69f15f8e6b54b5a7b0`, preserving the original project history and the student's initial README commit. All 75 file paths, modes and blob hashes were verified against local checkpoint `e4211a46ffcc04b5084418b82333a3cfedb063e1`.
 
-The proposed publication is the complete tested local Git history and the files below. It contains the student name, roll number, mentor, project title, local development paths and the supplied Git author name/email in commit history. Source code, synthetic examples and experiment records, test results, implementation instructions, draft professor briefing and screenshots would become publicly readable. The private reviewer database, recovery keys, real credentials, Python environment, model cache and supplied academic PDF/DOCX documents are excluded. The CI password is only for an ephemeral test database; the secrets example contains placeholders.
+The approved publication includes the complete tested local Git history and the files below. It contains the student name, roll number, mentor, project title, local development paths and the supplied Git author name/email in commit history. Source code, synthetic examples and experiment records, test results, implementation instructions, draft professor briefing and screenshots are publicly readable. The private reviewer database, recovery keys, real credentials, Python environment, model cache and supplied academic PDF/DOCX documents are excluded. The CI password is only for an ephemeral test database; the secrets example contains placeholders.
 
-Review `README.md`, `PROGRESS.md`, `PROJECT_CONTEXT.md`, and `docs/PROFESSOR_UPDATE_2026-11-10.md` for the main student/project details. This manifest describes the source checkpoint, not an already deployed app. The student explicitly approved this public publication on 9 November 2026. Upload is still subject to successful Git authentication and remote verification.
+Review `README.md`, `PROGRESS.md`, `PROJECT_CONTEXT.md`, and `docs/PROFESSOR_UPDATE_2026-11-10.md` for the main student/project details. This manifest describes the source checkpoint, not an already deployed app. The student explicitly approved this public publication on 9 November 2026. Subsequent documentation updates record actual publication and verification results.
 
-## Proposed current files
+## Approved checkpoint files
 
 - `.github/workflows/tests.yml`
 - `.gitignore`
