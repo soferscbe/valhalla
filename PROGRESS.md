@@ -142,6 +142,10 @@ GitHub connection verified for `soferscbe`; the initial accessible repository li
 
 **Local checkpoint:** `999bad0be79a02176cdc40f3fd6ed5e2992a257e` (`Add persistent review history and cloud deployment configuration`) succeeded with staged whitespace checks passing. This saves the tested review workflow, deployment files, updated professor briefing and the 75-file publication manifest. No source was uploaded and no remote was added. The supplied academic documents remain untracked. Public publication approval is the next required input.
 
+## 9 November 2026 — approved publication, Git authentication pending
+
+The student explicitly approved public publication of the 75-file manifest and existing Git history to `soferscbe/valhalla`. That resolves the earlier publication-approval gate; do not ask for the same permission again. Added `origin` pointing to `https://github.com/soferscbe/valhalla.git`. The approved `GIT_TERMINAL_PROMPT=0 git push -u origin HEAD:main` failed with exit 128 because command-line Git has no GitHub username/credential configured. No files or commits were uploaded. The connected GitHub plugin can inspect the repository, but does not supply credentials to the local Git process. Prepare official GitHub CLI authentication to preserve the existing commit history rather than replacing it with reconstructed API commits. Never ask for passwords or access tokens in chat. The official GitHub CLI release API/download attempt timed out at the proxy; no executable was installed. A repository-side import through the already-authorised GitHub integration is being prepared to transfer the exact approved Git bundle and verify its original commit IDs. Any temporary import workflow must check the bundle digest and expected remote head, preserve the source branch, and never overwrite unrelated remote updates. Publication and CI remain unverified until their actual results are recorded.
+
 ## Recommended next task
 
 Publish the tested checkpoint to the supplied repository, run Linux/PostgreSQL CI and verify the hosted workflow.

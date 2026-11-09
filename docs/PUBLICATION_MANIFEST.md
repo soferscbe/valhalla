@@ -4,7 +4,7 @@ Destination: `https://github.com/soferscbe/valhalla`, currently public. No sourc
 
 The proposed publication is the complete tested local Git history and the files below. It contains the student name, roll number, mentor, project title, local development paths and the supplied Git author name/email in commit history. Source code, synthetic examples and experiment records, test results, implementation instructions, draft professor briefing and screenshots would become publicly readable. The private reviewer database, recovery keys, real credentials, Python environment, model cache and supplied academic PDF/DOCX documents are excluded. The CI password is only for an ephemeral test database; the secrets example contains placeholders.
 
-Review `README.md`, `PROGRESS.md`, `PROJECT_CONTEXT.md`, and `docs/PROFESSOR_UPDATE_2026-11-10.md` for the main student/project details. This manifest describes the source checkpoint, not an already deployed app. Public publication requires explicit approval; alternatively, change the repository to private before upload.
+Review `README.md`, `PROGRESS.md`, `PROJECT_CONTEXT.md`, and `docs/PROFESSOR_UPDATE_2026-11-10.md` for the main student/project details. This manifest describes the source checkpoint, not an already deployed app. The student explicitly approved this public publication on 9 November 2026. Upload is still subject to successful Git authentication and remote verification.
 
 ## Proposed current files
 
