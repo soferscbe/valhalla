@@ -140,6 +140,8 @@ GitHub connection verified for `soferscbe`; the initial accessible repository li
 
 **Publication approval:** the combined local-commit/remote-push command was rejected before execution by automatic approval review. Reason: the destination is public, and broad publication of the unpublished source/documentation checkpoint on `main` lacked explicit approval of that payload's public disclosure. No commit, remote change or upload occurred from that rejected command. Prepared `docs/PUBLICATION_MANIFEST.md` listing the exact proposed files and noting student details plus Git author identity in history. Continue with local-only checkpointing; obtain explicit public-publication approval or verify the repository has been made private before any upload. Do not bypass the rejection through connector writes.
 
+**Local checkpoint:** `999bad0be79a02176cdc40f3fd6ed5e2992a257e` (`Add persistent review history and cloud deployment configuration`) succeeded with staged whitespace checks passing. This saves the tested review workflow, deployment files, updated professor briefing and the 75-file publication manifest. No source was uploaded and no remote was added. The supplied academic documents remain untracked. Public publication approval is the next required input.
+
 ## Recommended next task
 
 Publish the tested checkpoint to the supplied repository, run Linux/PostgreSQL CI and verify the hosted workflow.
