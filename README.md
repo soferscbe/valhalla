@@ -2,7 +2,7 @@
 
 An MBA-Tech research application for explainable, evidence-based SaaS feature prioritisation.
 
-**Current status (9 November 2026):** upload, validation, seeded synthetic datasets, local semantic grouping and transparent scoring work. The app supports strategy weights, score contributions, vote/fixed-weight/RICE-style comparisons, segment coverage and exports. The full suite passes **114 tests**, and an actual 1,500-record ranking comparison is saved. Stored human decisions and cloud deployment are **not implemented**; the full approved project remains incomplete. See `docs/SEMANTIC_RESULTS.md`, `docs/SCORING_RESULTS.md` and the updated `docs/PROFESSOR_UPDATE_2026-11-10.md`.
+**Current status (9 November 2026):** upload, validation, seeded synthetic datasets, local semantic grouping and transparent scoring work. The app supports strategy weights, score contributions, vote/fixed-weight/RICE-style comparisons, segment coverage and exports. The full suite passes **132 tests** (one PostgreSQL integration test remains skipped locally), and an actual 1,500-record ranking comparison is saved. Local accept/defer/override history with evidence snapshots is implemented and tested; cloud deployment is **not yet verified**; the full approved project remains incomplete. See `docs/SEMANTIC_RESULTS.md`, `docs/SCORING_RESULTS.md` and the updated `docs/PROFESSOR_UPDATE_2026-11-10.md`.
 
 Read `AGENTS.md`, `PROJECT_CONTEXT.md`, `PROGRESS.md` and `DECISIONS.md` before continuing development.
 
@@ -55,7 +55,7 @@ Store Excel IDs as **text**: numeric cells with zero-padding formats do not pres
 
 Missing optional values remain missing with a warning. Unknown columns, including any truth labels, are excluded from the validated output and reported. This is not sufficient by itself to guarantee future model leakage prevention: model inputs must explicitly select feedback text, and research labels must live separately. Invalid rows are reported with spreadsheet row numbers (header = row 1); rows are never silently dropped. Validation success is required before showing the validated preview.
 
-Uploads are processed in session memory; this application does not write them to disk. There is no durable storage, authentication or cross-session decision history yet. Use only synthetic/nonconfidential data.
+Uploads remain in session memory until you explicitly save a review. Saving stores a full evidence/strategy snapshot and a reason in the configured database. Local SQLite history survives restarts when its file is retained; a private recovery key restores the workspace in another browser session. This is lightweight bearer-key isolation, not authenticated user accounts. Use only synthetic/nonconfidential data. See `docs/REVIEW_WORKFLOW.md`.
 
 ## Tests and smoke check
 
@@ -66,7 +66,7 @@ python -m pip check
 PRODUCTLENS_OFFLINE=1 PRODUCTLENS_TEST_REAL_MODEL=1 python -m pytest -q
 ```
 
-Core tests cover file validation, deterministic data generation, leakage guards, grouping/count traceability, metric arithmetic, frozen experiment checks, customer/effort aggregation, missing signals, strategy changes, baseline comparisons and UI state. UI tests use [Streamlit AppTest](https://docs.streamlit.io/develop/api-reference/app-testing/st.testing.v1.apptest). The default suite skips two real-model tests; the final command enables them after model download, including the generated 500-row upload-to-grouping-to-scoring journey. AppTest simulates interaction. The six-row workflow, live strategy changes and score explanations were also exercised in a local browser on 9 November; no hosted journey has been verified. See `PROGRESS.md` for final test counts and results.
+Core tests cover file validation, deterministic data generation, leakage guards, grouping/count traceability, metric arithmetic, frozen experiment checks, customer/effort aggregation, missing signals, strategy changes, baseline comparisons and UI state. UI tests use [Streamlit AppTest](https://docs.streamlit.io/develop/api-reference/app-testing/st.testing.v1.apptest). The default suite skips two real-model tests and the PostgreSQL integration test unless its test database is configured; the final command enables them after model download, including the generated 500-row upload → grouping → scoring → saved-review journey. The PostgreSQL integration test still requires a separately configured test database. AppTest simulates interaction. The six-row workflow, live strategy changes and score explanations were also exercised in a local browser on 9 November; no hosted journey has been verified. See `PROGRESS.md` for final test counts and results.
 
 After starting Streamlit, `http://127.0.0.1:8501/_stcore/health` should return `ok`. Both this endpoint and the root page returned HTTP 200 during local verification. A healthy server alone does not validate the user journey; retain the UI tests and later verify the hosted workflow in a real browser.
 
@@ -94,7 +94,7 @@ PRODUCTLENS_OFFLINE=1 python -m productlens.ranking_experiment \
   --output experiments/ranking_v1_reproduction
 ```
 
-The CLI refuses existing output folders. It saves configurations, hashes, account/subgroup evidence, scores, baseline agreement, segment representation and ±20% weight sensitivity. Read [the protocol](docs/SCORING_PROTOCOL.md) and [measured results](docs/SCORING_RESULTS.md) before interpreting outputs. This first run is a descriptive synthetic comparison, not a finding that the strategy is universally correct. Strategy controls are session-only; exported CSV text is escaped for spreadsheet safety.
+The CLI refuses existing output folders. It saves configurations, hashes, account/subgroup evidence, scores, baseline agreement, segment representation and ±20% weight sensitivity. Read [the protocol](docs/SCORING_PROTOCOL.md) and [measured results](docs/SCORING_RESULTS.md) before interpreting outputs. This first run is a descriptive synthetic comparison, not a finding that the strategy is universally correct. Unsaved strategy controls are session-only; saving a review snapshots its exact settings and evidence. Exported CSV text is escaped for spreadsheet safety.
 
 ## Structure
 
@@ -109,6 +109,10 @@ productlens/ui_semantics.py  Group and source-evidence review UI
 productlens/scoring.py     Auditable aggregation, formulas and comparison metrics
 productlens/ui_scoring.py  Strategy controls, ranked view, explanations and exports
 productlens/ranking_experiment.py  Reproducible ranking and sensitivity CLI
+productlens/reviews.py     Immutable snapshots and isolated append-only review store
+productlens/ui_reviews.py  Accept/defer/override, recovery and history export
+deployment/               Cloud entrypoint, CPU dependencies and resolution receipt
+.github/workflows/tests.yml  Linux/real-model/PostgreSQL CI (awaiting remote run)
 productlens/grouping_metrics.py  Offline research metrics
 productlens/semantic_experiment.py  Separate tuning and evaluation commands
 config/semantic.json      Frozen tuning-selected settings used by the app
@@ -125,13 +129,15 @@ PROGRESS.md               Verified status, checks and one next task
 DECISIONS.md              Dated architecture/research trade-offs
 ```
 
-## Deployment plan — not executed
+## Review history and deployment
 
-Preferred candidate is Streamlit Community Cloud, as specified in the handoff. Prepare a source repository with `app.py`, `productlens/`, sample data, configuration and pinned requirements; exclude the virtual environment, secrets and uploaded data. Configure a Python 3.12 deployment with `app.py` as entry point. Resolve Linux dependency/model resource compatibility before calling hosting complete.
+After scoring, choose **Explain a priority**, then scroll to **Record a human review**. Start a private workspace and download its recovery key separately. Select accept, defer or override priority; enter a reason and save. An override is a human High/Medium/Low designation and does not rewrite the calculated rank. Changed data or weights create a new context; earlier events remain historical. All review saves are append-only.
 
-Include `config/semantic.json`. The deployment needs writable model-cache space and an initial model download (or a prepared model cache). Local held-out inference used approximately 567 MiB peak process memory; a Streamlit process and concurrent sessions may need more. PyTorch platform dependencies and cloud resource limits require actual deployment validation. Do not assume this local measurement guarantees cloud feasibility.
+Local storage defaults to ignored `data/private/reviews.sqlite3`; `PRODUCTLENS_REVIEW_DB` can select a different local file. Keep the file and recovery key to restore history. JSON export includes evidence and reasons, but no recovery key. Cloud mode instead requires a PostgreSQL URL with TLS, configured only in server-side secrets.
 
-Before publishing a complete MVP, determine durable storage for decision history; local filesystem persistence must not be assumed to survive cloud restarts. After deployment, record the actual URL and verify sample mode, valid CSV/XLSX uploads, malformed inputs, semantic grouping, score explanations and persistence of human decisions. No hosting account, deployment or hosted journey has been verified yet.
+GitHub source destination: [soferscbe/valhalla](https://github.com/soferscbe/valhalla). The repository was initially empty and public; publication/CI status is recorded in `PROGRESS.md`. It is not the application URL.
+
+Cloud entrypoint: **`deployment/streamlit_app.py`**, Python **3.12**, with adjacent `deployment/requirements.txt`. The same application runs with local review-storage fallback disabled. Linux CPU dependency resolution passed, but hosted execution and PostgreSQL persistence remain unverified. No public application URL exists yet. Follow [the concrete deployment handoff](docs/DEPLOYMENT.md) for secrets, checks and the restart test.
 
 ## Research boundaries
 

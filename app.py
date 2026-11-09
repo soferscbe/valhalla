@@ -38,7 +38,7 @@ else:
     uploaded = st.file_uploader("Choose feedback CSV or XLSX", type=["csv", "xlsx"])
     if uploaded is not None:
         content, filename = uploaded.getvalue(), uploaded.name
-st.caption("Uploads are processed in this session and are not saved to disk. Use no confidential customer or company data.")
+st.caption("Uploads stay in this session until you explicitly save a review; saving also stores its evidence snapshot. Use no confidential data.")
 if content is None:
     st.session_state.pop("semantic_result", None)
     st.write("Upload a file or try the synthetic sample to see validation results.")

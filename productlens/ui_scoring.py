@@ -5,6 +5,8 @@ import json
 import pandas as pd
 import streamlit as st
 
+from productlens.ui_reviews import render_reviews
+
 from productlens.scoring import (DEFAULT_WEIGHTS, FACTORS, METHODS, aggregate_evidence,
                                  compare_scores, score_opportunities, segment_representation)
 
@@ -21,7 +23,7 @@ def export_csv(frame):
     return frame.map(safe).to_csv(index=False).encode("utf-8")
 
 
-def render_scoring(data, groups):
+def render_scoring(data, groups, semantic_config):
     st.header("Prioritise with evidence")
     st.write("Explore how business assumptions change the order. Scores are deterministic; AI proposes the groups.")
     st.warning("Provisional priorities: review grouping and effort before a roadmap commitment. "
@@ -90,4 +92,4 @@ def render_scoring(data, groups):
                    "Top-K uses up to five shared candidates; constant ranks have undefined correlation.")
         st.write("Customer segment coverage for the strategy's Top-5")
         st.dataframe(pd.DataFrame(segment_representation(evidence, scores, "priority_score")), hide_index=True, width="stretch")
-    st.caption("Strategy controls are exploratory and are not stored as review decisions. Export the current scores to retain this view.")
+    render_reviews(evidence, groups, result, semantic_config, chosen)

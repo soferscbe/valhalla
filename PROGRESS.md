@@ -1,6 +1,6 @@
 # ProductLens AI progress
 
-**Current verified status — 9 November 2026:** local upload → validation → real semantic grouping → deterministic scoring and source explanations passes automated tests. Frozen held-out semantic results and an actual 1,500-row descriptive ranking experiment are saved. Current full suite: **114 passed**. Live-browser strategy changes and score explanations are verified; the professor brief is updated. Stored human decisions, cloud deployment and the final academic report remain incomplete; deadline still 15 November.
+**Current verified status — 9 November 2026:** local upload → validation → real semantic grouping → deterministic scoring → saved human review works. Latest full suite: **132 passed, 1 skipped** (real PostgreSQL integration requires a configured test database). Local persistence/recovery and browser review save are verified. Linux CPU dependency resolution and cloud entrypoint are prepared; actual hosted operation, PostgreSQL persistence, broader data robustness and final report remain incomplete. Deadline is 15 November.
 
 ## 5 November 2026 — project memory established before implementation
 
@@ -122,13 +122,31 @@ Checks so far: baseline **87 passed in 5.52s**; new scoring core **22 passed in 
 
 **Saved checkpoint:** commit `7d61d60ef3a8f822c91c89298333af0b445c7b42` (`Add auditable scoring and reproducible ranking comparisons`) succeeded on `codex/semantic-milestone`; staged whitespace checks passed. Nothing was pushed or published. Supplied academic source documents remain untracked and unchanged.
 
+## 9 November 2026 — persistent review workflow (deployment verification in progress)
+
+Implemented immutable evidence/strategy snapshots and append-only accept/defer/manual-priority review events with required reasons. Local SQLite stores snapshots transactionally; an optional PostgreSQL adapter supports hosted durable storage without a local fallback in cloud mode. Workspace recovery keys are generated, stored only as digests, and scope all queries. Different input/strategy versions retain earlier events as historical. Current workflow includes recovery, explicit storage disclosure and JSON evidence/history export.
+
+Initial checks: previous suite **114 passed in 7.35s**; expanded suite **131 passed, 1 skipped in 8.65s**. The skipped test is the real PostgreSQL round trip (no configured test database). SQLite tests exercise a separate Python interpreter, eight concurrent appends, rollback after an injected insert failure, namespace isolation, tampered snapshots, required reasons, overrides and stale-context handling. App tests exercise save/rerun/recovery and missing-cloud-storage errors. PostgreSQL driver psycopg/psycopg-binary **3.3.8** installed from official PyPI; `pip check` reports no broken requirements. Root research requirements remain unchanged.
+
+GitHub connection verified for `soferscbe`; the initial accessible repository list was empty. The student subsequently supplied `https://github.com/soferscbe/valhalla`, verified public, empty and writable. No hosted application URL exists yet. Linux dependency resolution, cloud-entrypoint tests and browser review QA subsequently completed as recorded below. The initial Linux resolution selected a 539.2 MB generic PyTorch wheel; stopped that check and pinned the official hash-verified CPU wheel for the deployment dependency file. No model/settings or saved research results were retuned.
+
+**Final local checks:** after extending the real-model test through an actual 500-record saved snapshot and adding a cloud-entrypoint guard test, **132 passed, 1 skipped in 8.68s**. After the final candidate-label UI adjustment, the full suite again passed **132 tests with 1 PostgreSQL skip in 8.96s**. The one skipped test is real PostgreSQL, not semantic inference. No local PostgreSQL server or Docker runtime was available. An actual Linux/PG GitHub Actions run is prepared, not yet claimed successful.
+
+**Browser review verification:** local server restarted at session 74108. The six-row sample was grouped/scored and a `Defer` event saved with reviewer `Automated demo` and a reason explicitly marked as synthetic demonstration, not participant evidence. The success message and persisted event table were observed; screenshot `docs/review-demo.png`. Only a synthetic record was written to ignored local SQLite. Recovery keys were not recorded in project files or screenshots. Automated tests verify fresh-session restoration; browser file download and hosted restart tests remain unverified. A final small UI addition explicitly names the candidate being reviewed; AppTest covers that final code while the screenshot shows the preceding save/table view.
+
+**Deployment preparation:** `deployment/streamlit_app.py` runs the same app with cloud storage mode forced; adjacent requirements select official hash-pinned torch 2.15.0+cpu for Linux x86_64/Python 3.12 and psycopg 3.3.8. Cross-platform pip resolution succeeded for **72 packages**, without NVIDIA dependencies. Receipt saved in `deployment/linux_dependency_receipt.json`; logs under ignored `tmp/`. This is not execution on Linux. `.github/workflows/tests.yml` is prepared for real-model tests plus a disposable PostgreSQL 17 service; YAML parsed locally. Real database credentials and service setup remain required for hosting. See `docs/DEPLOYMENT.md` for concrete setup and acceptance checks.
+
+**Access issue:** attempted inspection of the student's GitHub Chrome tab was rejected by automatic approval review because the approval service reported a usage limit (not a manual rejection or unsafe-action finding). Did not retry through another browser or bypass the gate. Used the already-connected, authorised GitHub API to verify the exact repository URL subsequently supplied by the student. Browser deployment actions may remain blocked until that service limit resolves. No changes to account permissions or repository visibility were made.
+
+**Publication approval:** the combined local-commit/remote-push command was rejected before execution by automatic approval review. Reason: the destination is public, and broad publication of the unpublished source/documentation checkpoint on `main` lacked explicit approval of that payload's public disclosure. No commit, remote change or upload occurred from that rejected command. Prepared `docs/PUBLICATION_MANIFEST.md` listing the exact proposed files and noting student details plus Git author identity in history. Continue with local-only checkpointing; obtain explicit public-publication approval or verify the repository has been made private before any upload. Do not bypass the rejection through connector writes.
+
 ## Recommended next task
 
-Complete stored human review and deploy the smallest end-to-end workflow.
+Publish the tested checkpoint to the supplied repository, run Linux/PostgreSQL CI and verify the hosted workflow.
 
 Acceptance checks:
 
-1. Add accept/defer/override actions with mandatory reasons and auditable snapshots of the dataset, grouping, scoring assumptions and source evidence; prevent decisions from silently applying to changed inputs or groups.
-2. Verify review persistence across app reruns/restarts, explicit storage errors and session isolation; choose and document durable storage suitable for the selected host, without claiming ephemeral local files are cloud-durable.
-3. Run upload → grouping → scoring → recorded review tests and prepare reproducible deployment configuration; keep the frozen experiments and original evidence intact.
-4. Deploy with authorised hosting access and verify the actual hosted journey and decision persistence. Record the real URL and checks, or the specific unresolved hosting/access requirement; do not label local success as deployment.
+1. Preserve existing remote files/history; publish the verified source and record the actual branch/commit. Keep academic source documents, model cache, secrets and local reviews out of the upload.
+2. Inspect an actual GitHub Actions result and resolve any Linux/model/PostgreSQL test failures. Dependency resolution alone does not satisfy this check.
+3. Configure Streamlit Community Cloud with `deployment/streamlit_app.py`, Python 3.12 and a dedicated TLS PostgreSQL database via private secrets; do not fall back to ephemeral local review files.
+4. Record the live URL and verify upload → grouping → scoring → saved review, cross-workspace isolation and restore after hosted restart. If access remains unavailable, record the exact unmet requirement without claiming deployment.

@@ -79,4 +79,4 @@ def render_semantic_groups(data):
     ).reset_index()
     st.dataframe(duplicate_summary, hide_index=True, width="stretch")
 
-    render_scoring(data, result)
+    render_scoring(data, result, saved)

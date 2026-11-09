@@ -10,7 +10,7 @@ Prepared on 9 November 2026 for discussion on **10 November 2026**. Review and a
 
 “The project now has a working local prototype that uploads and validates feedback, groups related requests using a pinned sentence-embedding model, and lets me inspect the original evidence and distinct customers behind each group. It now also calculates transparent priorities, shows score contributions, and lets me change strategy weights and compare baselines. I have reproducible synthetic datasets with 500 and 1,500 records. I have also completed an initial held-out evaluation of the semantic grouping component, with settings selected only on tuning data.
 
-“The results show both useful matches and clear limitations: duplicate links have high precision in this synthetic test, but many paraphrases are missed and broad groups sometimes combine different needs. I have retained the errors and source evidence rather than treating the AI output as authoritative. The scoring engine and an initial 1,500-record ranking comparison now work locally. Some candidates remain unranked because their inputs are incomplete. Stored human decisions and cloud deployment are still pending. My immediate priority is completing and deploying that workflow, followed by further robustness checks and the report.”
+“The results show both useful matches and clear limitations: duplicate links have high precision in this synthetic test, but many paraphrases are missed and broad groups sometimes combine different needs. I have retained the errors and source evidence rather than treating the AI output as authoritative. The scoring engine and an initial 1,500-record ranking comparison now work locally. Some candidates remain unranked because their inputs are incomplete. Stored human decisions now work locally with reasons and exact evidence snapshots; cloud deployment is still pending. My immediate priority is completing and deploying that workflow, followed by further robustness checks and the report.”
 
 ## What can be demonstrated now
 
@@ -21,13 +21,13 @@ Prepared on 9 November 2026 for discussion on **10 November 2026**. Review and a
 | Semantic grouping | Real MiniLM embeddings running locally, broad opportunities and stricter candidate duplicates |
 | Explainability at grouping stage | Original requests, representative source sentence, extracted terms, request counts and distinct customers |
 | Research controls | Whole request families and customer accounts separated between tuning and evaluation; frozen configuration and source/model hashes |
-| Automated verification | 114 tests passed on 9 November, including real-model upload → grouping → scoring and UI strategy/state checks |
+| Automated verification | 132 tests passed on 9 November, including real-model upload → grouping → scoring → saved review; one PostgreSQL integration test remains skipped locally |
 | Scoring and strategy simulation | Working locally: account deduplication, provisional effort, configurable weights, factor contributions and exports |
 | Vote/weighted/RICE-style ranking comparison | Initial 1,500-record descriptive run saved, with defined denominators and weight sensitivity |
-| Accept/override and durable history | Not implemented |
+| Accept/defer/override history | Working locally with reasons, immutable snapshots, private recovery keys and restart tests; hosted persistence unverified |
 | Cloud deployment and full report | Not completed; there is no verified public URL |
 
-The current local demo is a completed component workflow, not the completed approved project. Viewing grouped evidence is not yet a stored accept/override decision workflow.
+The current local demo is a completed component workflow, not the completed approved project. The local workflow now includes saved human review; the complete hosted project and final report remain unfinished.
 
 ## Initial results to explain accurately
 
@@ -69,15 +69,16 @@ Open `http://127.0.0.1:8501` on this laptop. This is a local address and cannot 
 3. Click **Group related feedback**. Select an opportunity, inspect its representative request and source rows, then show its stricter candidate duplicate groups.
 4. Point out one plausible grouping and one limitation. Scroll to **Prioritise with evidence**. Show the coverage message, a score contribution table, original inputs and a candidate needing missing-input review.
 5. Change the account-value weight and explain the changed score/order. Show that the fixed baseline remains unchanged. Export scores and assumptions if useful.
-6. Open `docs/SEMANTIC_RESULTS.md` and `docs/SCORING_RESULTS.md` to show measured findings and their limits. These are provisional candidate priorities, not approved roadmap decisions.
+6. Start a private review workspace, retain its recovery key, and save a clearly marked demonstration decision with a reason. Change a weight to show that the older decision remains historical. Automated demonstration records are not participant-study evidence.
+7. Open `docs/SEMANTIC_RESULTS.md` and `docs/SCORING_RESULTS.md` to show measured findings and their limits. These are provisional candidate priorities, not approved roadmap decisions.
 
 The built-in six-row sample is useful to explain the controls quickly, but is not the research dataset. For a demo fallback, keep the saved experiment results and this briefing available; do not substitute a static result while claiming live inference.
 
 ## Methodology and likely questions
 
-**Where does Design Science Research fit?** Problem definition is approved; artefact design, implementation and a local component demonstration are underway; semantic evaluation and initial ranking comparisons are measured. Stored decision review, deployment, broader evaluation and communication in the final report remain incomplete.
+**Where does Design Science Research fit?** Problem definition is approved; artefact design, implementation and a local component demonstration are underway; semantic evaluation and initial ranking comparisons are measured. Deployment, hosted persistence, broader evaluation and communication in the final report remain incomplete.
 
-**What exactly does AI decide?** It represents feedback text and groups related requests. The separate deterministic engine calculates provisional rankings from explicit business factors and weights. AI does not select those weights or the final roadmap. Stored human decisions remain the next workflow step.
+**What exactly does AI decide?** It represents feedback text and groups related requests. The separate deterministic engine calculates provisional rankings from explicit business factors and weights. AI does not select those weights or the final roadmap. Human accept/defer/override actions are stored separately with reasons and exact evidence snapshots.
 
 **How is leakage reduced?** Known labels are separate from model inputs. The model sees only feedback text. Complete request families, including all paraphrases, stay in one split; customer accounts also do not cross splits. Common vocabulary, finite templates and the same authoring process remain limitations.
 
@@ -99,7 +100,7 @@ The stated deadline remains **15 November 2026**. The remaining scope is substan
 | Target | Work |
 | --- | --- |
 | Completed locally on 9 November | Transparent scoring, distinct-account aggregation, contributions and initial baseline/weight comparisons |
-| 10–11 November | Stored accept/override decisions and early cloud deployment with verified persistence |
+| 10–11 November | Cloud deployment and verification of hosted decision persistence; local stored review is implemented |
 | 11–12 November | Hosted journey checks, data robustness and further evaluation/interpretation |
 | 12–14 November | Student-reviewed results/limitations, report assembly, IEEE citations, Annexure formatting and demo rehearsal |
 | 15 November | Final verification and submission by the prescribed deadline |
@@ -118,3 +119,5 @@ Protect deployment, evaluation and report time. Defer roadmap optimisation, conv
 - `docs/SCORING_PROTOCOL.md` and `docs/SCORING_RESULTS.md`: exact scoring assumptions and measured findings.
 - `experiments/ranking_v1/`: input/config hashes, account/subgroup evidence, score tables, comparisons and sensitivity.
 - `docs/scoring-demo.png`: verified local score explanation.
+
+- `docs/REVIEW_WORKFLOW.md` and `docs/DEPLOYMENT.md`: local review behavior, exact cloud setup and remaining verification.
