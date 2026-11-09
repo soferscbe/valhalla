@@ -1,6 +1,6 @@
 # ProductLens AI progress
 
-**Current verified status — 9 November 2026:** local upload → validation → real semantic grouping → source/duplicate-group inspection works. Frozen held-out semantic results are saved. Final full suite: **87 passed**. Professor discussion brief prepared for 10 November. Scoring, stored human decisions, ranking comparisons, cloud deployment and final academic report remain incomplete; deadline still 15 November.
+**Current verified status — 9 November 2026:** local upload → validation → real semantic grouping → deterministic scoring and source explanations passes automated tests. Frozen held-out semantic results and an actual 1,500-row descriptive ranking experiment are saved. Current full suite: **114 passed**. Live-browser strategy changes and score explanations are verified; the professor brief is updated. Stored human decisions, cloud deployment and the final academic report remain incomplete; deadline still 15 November.
 
 ## 5 November 2026 — project memory established before implementation
 
@@ -106,13 +106,27 @@ Created `docs/PROFESSOR_UPDATE_2026-11-10.md` for tomorrow's discussion: suggest
 
 **Git checkpoint:** created branch `codex/semantic-milestone`; the initial commit attempt failed because no author identity was configured. After the student supplied their email, configured the author identity for this repository only, restaged the progress log, and passed `git diff --cached --check`. Successfully saved implementation, documentation, tests and small experimental artefacts in commit `c00669b0cebc45b722cb4ec41d285e9c2e38d5b2` (`Build tested feedback ingestion and semantic grouping prototype`). Nothing was pushed. Supplied academic PDF/DOCX source documents remain untracked. No application code changed during this checkpoint operation; the preceding 87-test verification still applies.
 
+## 9 November 2026 — decision engine and ranking comparison completed locally
+
+Implemented `productlens/scoring.py`, `ui_scoring.py`, and `ranking_experiment.py`, integrated priorities into the existing app, and declared `docs/SCORING_PROTOCOL.md` before the first experiment. Added core, app and experiment tests. Deterministic aggregation separates accounts, requests and endorsements; account conflicts and missing active factors remain visible; provisional effort counts each duplicate subgroup once. Strategy controls expose contributions, fixed/vote/RICE-style comparisons, segment coverage and a CSV export. No stored decisions or cloud delivery are implied.
+
+Checks so far: baseline **87 passed in 5.52s**; new scoring core **22 passed in 0.68s**; expanded suite **112 passed in 7.11s**; with experiment tests, `PRODUCTLENS_OFFLINE=1 PRODUCTLENS_TEST_REAL_MODEL=1 .venv/bin/python -m pytest -q` → **114 passed in 6.83s**. Real-model 500-row AppTest now reaches scored priorities. The 1,500-row ranking CLI completed with 27 candidates and exact 1,500/1,500 ID traceability. Coverage: strategy 14, votes 27, fixed weighted 20, RICE-style 14. Results/configuration/provenance saved under `experiments/ranking_v1/`. Thirteen strategy candidates are unrankable due to unknown effort, seven also lacking complete urgency/alignment. Live-browser scoring QA and the final documentation update subsequently completed as recorded below.
+
+**Final verification:** after adding the scoring-assumptions JSON export and readable missing-score display, the full offline real-model suite passed **114 tests in 8.07s**. Ranking report input, grouping-config and source hashes were independently checked against the current files and all matched. `git diff --check` passed. No changes were made to frozen semantic model/grouping/metric code or thresholds. No new dependencies were introduced. Experiment CSV reproduction is tested with controlled embeddings; a second real-model 1,500-row ranking run was not performed.
+
+**Live browser:** restarted the task-owned local server to load imported modules. The sandboxed launch failed to bind its socket (`PermissionError`); an approved local launch succeeded at `http://127.0.0.1:8501`, session 49230. The six-row sample produced two scored candidates. Increasing account-value weight from 30 to 99 changed the priority order: the broad usage/changes/email group moved above the dashboard keyboard group; factor contributions updated and fixed weighted baseline scores stayed unchanged. Browser AX and screenshot checks verified the explanation and retained source-review controls. Screenshot: `docs/scoring-demo.png`; local tab/server left available for demonstration. Browser downloads were not clicked; CSV escaping and content generation are covered by automated tests. Actual 500-row upload/scoring is verified through AppTest, not the browser file picker. No hosted journey is verified.
+
+**Actual comparison findings:** among 14 shared rankable candidates, balanced-vs-votes Spearman −0.3363 / Top-5 agreement 0/5; vs fixed weighted benefit −0.2442 / 0/5; vs RICE-style 0.9385 / 4/5. Enterprise and reach emphasis each changed one Top-5 member. All eight ±20% weight perturbations preserved Top-5; seven preserved all ranks. First-run grouping took 1.8823s including model loading, and aggregation/scoring/comparison took 0.2744s; these exclude process launch, file output and browser rendering. They are not manual-workflow time savings. Full exact values and segment denominators are in `experiments/ranking_v1/report.json` and `docs/SCORING_RESULTS.md`.
+
+**Documentation and limits:** updated README, context, decisions and `docs/PROFESSOR_UPDATE_2026-11-10.md` to include demonstrated scoring and precise limitations. Saved approximately 304 KiB of experiment evidence. Scoring uses provisional scope and urgency-as-impact proxies; effort/grouping errors and missing inputs constrain comparisons. All baselines share the same AI groups; this is not a controlled human-workflow comparison. No claim of ranking correctness, business improvement or participant observations. No known failing tests. Stored accept/override decisions, durable hosted persistence, cloud/Linux verification, broader data robustness and the final report remain pending.
+
 ## Recommended next task
 
-Implement the transparent decision engine and its vote-based, weighted and RICE-style baselines on the evidence-linked groups.
+Complete stored human review and deploy the smallest end-to-end workflow.
 
 Acceptance checks:
 
-1. Aggregate distinct customers separately from request/vote volume; avoid repeated account ARR and duplicate-request effort inflation, and expose conflicting/missing signals and group-review limitations.
-2. Define the formula, units, normalisation, effort and confidence assumptions, tie handling and baseline conventions in `DECISIONS.md` before interpretation; compute rankings deterministically with visible score contributions and source feedback.
-3. Add configurable weights and a ranked app view; test changes of weights, repeated customers, missing values, ties, empty input and traceability without an LLM choosing ranks.
-4. Run the synthetic upload → grouping → scoring journey and core/app tests, save actual comparison outputs without claiming universal correctness, then proceed promptly toward minimal persistent human review and cloud deployment.
+1. Add accept/defer/override actions with mandatory reasons and auditable snapshots of the dataset, grouping, scoring assumptions and source evidence; prevent decisions from silently applying to changed inputs or groups.
+2. Verify review persistence across app reruns/restarts, explicit storage errors and session isolation; choose and document durable storage suitable for the selected host, without claiming ephemeral local files are cloud-durable.
+3. Run upload → grouping → scoring → recorded review tests and prepare reproducible deployment configuration; keep the frozen experiments and original evidence intact.
+4. Deploy with authorised hosting access and verify the actual hosted journey and decision persistence. Record the real URL and checks, or the specific unresolved hosting/access requirement; do not label local success as deployment.

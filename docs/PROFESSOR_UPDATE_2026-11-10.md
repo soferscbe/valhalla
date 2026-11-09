@@ -8,9 +8,9 @@ Prepared on 9 November 2026 for discussion on **10 November 2026**. Review and a
 
 ## Suggested opening
 
-“The project now has a working local prototype that uploads and validates feedback, groups related requests using a pinned sentence-embedding model, and lets me inspect the original evidence and distinct customers behind each group. I have reproducible synthetic datasets with 500 and 1,500 records. I have also completed an initial held-out evaluation of the semantic grouping component, with settings selected only on tuning data.
+“The project now has a working local prototype that uploads and validates feedback, groups related requests using a pinned sentence-embedding model, and lets me inspect the original evidence and distinct customers behind each group. It now also calculates transparent priorities, shows score contributions, and lets me change strategy weights and compare baselines. I have reproducible synthetic datasets with 500 and 1,500 records. I have also completed an initial held-out evaluation of the semantic grouping component, with settings selected only on tuning data.
 
-“The results show both useful matches and clear limitations: duplicate links have high precision in this synthetic test, but many paraphrases are missed and broad groups sometimes combine different needs. I have retained the errors and source evidence rather than treating the AI output as authoritative. The transparent scoring engine, baseline ranking comparison, stored human decisions and cloud deployment are still pending. My immediate priority is completing that smallest end-to-end workflow, followed by comparative experiments and the report.”
+“The results show both useful matches and clear limitations: duplicate links have high precision in this synthetic test, but many paraphrases are missed and broad groups sometimes combine different needs. I have retained the errors and source evidence rather than treating the AI output as authoritative. The scoring engine and an initial 1,500-record ranking comparison now work locally. Some candidates remain unranked because their inputs are incomplete. Stored human decisions and cloud deployment are still pending. My immediate priority is completing and deploying that workflow, followed by further robustness checks and the report.”
 
 ## What can be demonstrated now
 
@@ -21,9 +21,9 @@ Prepared on 9 November 2026 for discussion on **10 November 2026**. Review and a
 | Semantic grouping | Real MiniLM embeddings running locally, broad opportunities and stricter candidate duplicates |
 | Explainability at grouping stage | Original requests, representative source sentence, extracted terms, request counts and distinct customers |
 | Research controls | Whole request families and customer accounts separated between tuning and evaluation; frozen configuration and source/model hashes |
-| Automated verification | Final run: 87 tests passed on 9 November, including the real-model upload-to-grouping journey and UI state checks |
-| Scoring and strategy simulation | Not implemented |
-| Vote/weighted/RICE ranking comparison | Not run |
+| Automated verification | 114 tests passed on 9 November, including real-model upload → grouping → scoring and UI strategy/state checks |
+| Scoring and strategy simulation | Working locally: account deduplication, provisional effort, configurable weights, factor contributions and exports |
+| Vote/weighted/RICE-style ranking comparison | Initial 1,500-record descriptive run saved, with defined denominators and weight sensitivity |
 | Accept/override and durable history | Not implemented |
 | Cloud deployment and full report | Not completed; there is no verified public URL |
 
@@ -40,9 +40,17 @@ The initial semantic experiment uses the **500-record** dataset: 250 tuning and 
 | Duplicate recall | 0.472 | More than half of the reference duplicate links were missed |
 | Duplicate F1 | 0.633 | Combined precision/recall summary |
 
-Do not present this as “96% application accuracy.” It is one component, one synthetic design, and a particular pairwise metric. The 1,500-row dataset has passed an execution scale check; it has not supplied an independent generalisation result or the final ranking comparison.
+Do not present this as “96% application accuracy.” It is one component, one synthetic design, and a particular pairwise metric. The 1,500-row dataset now supports an initial ranking comparison as well as the execution scale check. It is not an independent generalisation result.
 
 Two useful failure examples: quota-alert recipient configuration can be confused with quota-threshold alerts; paraphrases about dashboard icons can be split apart. Multi-intent feedback is currently assigned to one group, so another need can be missed. The six-row sample can also over-merge unrelated needs into a broad group. Show the original feedback and stricter subgroups to explain why human review is needed.
+
+## New scoring results to explain
+
+The 1,500 synthetic records produced 27 candidate groups. Fourteen have enough inputs for effort-adjusted scoring; thirteen need effort clarification, and seven of those also lack complete urgency/alignment. All 27 remain visible. Do not describe the unranked candidates as low priority.
+
+On the **14 candidates scored by both methods**, the balanced strategy's Top-5 has no overlap with vote or fixed-benefit Top-5, and four of five overlap with the RICE-style proxy. This demonstrates the consequence of business assumptions and an effort denominator; it does **not** prove the system is better. Both effort-adjusted methods share the same provisional cost proxy. Eight ±20% weight changes retained the Top-5; larger enterprise/reach scenarios each changed one member. This is local sensitivity on one synthetic fixture, not general robustness.
+
+The formula is straightforward: normalise reach, resolved ARR, urgency and alignment; combine with explicit weights; divide by provisional effort. Repeated customers do not multiply account value. Effort counts each candidate duplicate subgroup once. Missing active factors prevent a score. Confidence in the RICE-style comparison is a declared common assumption, not an AI probability. See `docs/SCORING_PROTOCOL.md` and `docs/SCORING_RESULTS.md` for precise definitions.
 
 ## Five-minute demonstration
 
@@ -59,20 +67,21 @@ Open `http://127.0.0.1:8501` on this laptop. This is a local address and cannot 
 1. Upload `data/generated/v1.0.0_seed42_n500/inputs/feedback.csv`. Explain that every row is synthetic and missing uncertain signals are shown as warnings.
 2. Show 500 feedback records versus 98 distinct customers. Explain why repeated requests are not equivalent to additional customer reach.
 3. Click **Group related feedback**. Select an opportunity, inspect its representative request and source rows, then show its stricter candidate duplicate groups.
-4. Point out one plausible grouping and one limitation. Do not describe a broad group as an accepted feature or priority.
-5. Open `docs/SEMANTIC_RESULTS.md` or `experiments/semantic_v1/heldout/evaluation.json` to show actual results and the frozen evaluation conditions.
+4. Point out one plausible grouping and one limitation. Scroll to **Prioritise with evidence**. Show the coverage message, a score contribution table, original inputs and a candidate needing missing-input review.
+5. Change the account-value weight and explain the changed score/order. Show that the fixed baseline remains unchanged. Export scores and assumptions if useful.
+6. Open `docs/SEMANTIC_RESULTS.md` and `docs/SCORING_RESULTS.md` to show measured findings and their limits. These are provisional candidate priorities, not approved roadmap decisions.
 
 The built-in six-row sample is useful to explain the controls quickly, but is not the research dataset. For a demo fallback, keep the saved experiment results and this briefing available; do not substitute a static result while claiming live inference.
 
 ## Methodology and likely questions
 
-**Where does Design Science Research fit?** Problem definition is approved; artefact design, implementation and a local component demonstration are underway; semantic evaluation is measured. End-to-end prioritisation evaluation and communication in the final report remain incomplete.
+**Where does Design Science Research fit?** Problem definition is approved; artefact design, implementation and a local component demonstration are underway; semantic evaluation and initial ranking comparisons are measured. Stored decision review, deployment, broader evaluation and communication in the final report remain incomplete.
 
-**What exactly does AI decide?** It represents feedback text and groups related requests. It does not currently produce a final priority ranking. The next engine will use an auditable deterministic formula with explicit weights, source signals and human decisions.
+**What exactly does AI decide?** It represents feedback text and groups related requests. The separate deterministic engine calculates provisional rankings from explicit business factors and weights. AI does not select those weights or the final roadmap. Stored human decisions remain the next workflow step.
 
 **How is leakage reduced?** Known labels are separate from model inputs. The model sees only feedback text. Complete request families, including all paraphrases, stay in one split; customer accounts also do not cross splits. Common vocabulary, finite templates and the same authoring process remain limitations.
 
-**Has the research question been answered?** No. The current result evaluates semantic grouping only. Claims about consistency, efficiency and use of evidence versus conventional prioritisation require the planned end-to-end baseline comparisons. No user study or real business impact has been observed.
+**Has the research question been answered?** No. The current work measures semantic grouping and demonstrates ranking disagreement, traceability and local weight sensitivity. That is partial evidence, not yet an answer about improved consistency, efficiency and evidence use in practice. There is no measured manual-workflow time saving, user study or real business impact.
 
 **How much was AI-assisted?** Development, synthetic wording/labels and these draft notes have used AI assistance. Review and understand the implementation and comply with the institute's academic-integrity requirements. Do not present generated prose as independent student-authored research or invent participants/results.
 
@@ -89,9 +98,9 @@ The stated deadline remains **15 November 2026**. The remaining scope is substan
 
 | Target | Work |
 | --- | --- |
-| 9–10 November | Transparent scoring, distinct-account aggregation, score contributions and baseline implementations |
-| 10–11 November | Minimal strategy/decision workflow and early cloud deployment with durable decisions |
-| 11–12 November | Hosted journey checks, actual baseline comparisons and sensitivity experiments |
+| Completed locally on 9 November | Transparent scoring, distinct-account aggregation, contributions and initial baseline/weight comparisons |
+| 10–11 November | Stored accept/override decisions and early cloud deployment with verified persistence |
+| 11–12 November | Hosted journey checks, data robustness and further evaluation/interpretation |
 | 12–14 November | Student-reviewed results/limitations, report assembly, IEEE citations, Annexure formatting and demo rehearsal |
 | 15 November | Final verification and submission by the prescribed deadline |
 
@@ -105,3 +114,7 @@ Protect deployment, evaluation and report time. Defer roadmap optimisation, conv
 - `experiments/semantic_v1/tuning/frozen_config.json`: selected parameters and provenance.
 - `experiments/semantic_v1/heldout/`: predictions, metrics, challenge rows and duplicate errors.
 - `experiments/semantic_v1/scale_check.json`: 1,500-row execution evidence.
+
+- `docs/SCORING_PROTOCOL.md` and `docs/SCORING_RESULTS.md`: exact scoring assumptions and measured findings.
+- `experiments/ranking_v1/`: input/config hashes, account/subgroup evidence, score tables, comparisons and sensitivity.
+- `docs/scoring-demo.png`: verified local score explanation.

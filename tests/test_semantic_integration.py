@@ -39,3 +39,9 @@ def test_generated_upload_to_real_semantic_groups():
     assert cached.opportunities.request_count.sum() == 500
     assert set(cached.assignments.feedback_id) == set(data.feedback_id)
     assert app.selectbox
+
+    assert any("Scoring complete" in item.value for item in app.success)
+    score_table = next(item.value for item in app.dataframe if "priority_score" in item.value.columns)
+    assert len(score_table) == len(cached.opportunities)
+    assert score_table.request_count.sum() == 500
+    assert score_table.priority_score.notna().any()

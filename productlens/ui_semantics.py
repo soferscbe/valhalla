@@ -8,6 +8,7 @@ import streamlit as st
 
 from productlens.embeddings import EmbeddingUnavailable, MODEL_ID, MODEL_REVISION
 from productlens.grouping import GroupingConfig, MAX_GROUPING_ROWS, group_feedback
+from productlens.ui_scoring import render_scoring
 
 CONFIG_PATH = Path(__file__).resolve().parents[1] / "config" / "semantic.json"
 
@@ -41,13 +42,13 @@ def render_semantic_groups(data):
             st.session_state.semantic_result = (signature, result)
         except (EmbeddingUnavailable, ValueError) as exc:
             st.error(str(exc))
-    st.caption("AI suggestions need review. Each request has one group, so overlapping needs may be missed. Prioritisation is the next milestone.")
+    st.caption("AI suggestions need review. Each request has one group, so overlapping needs may be missed. Inspect the evidence and the provisional priorities below.")
     with st.expander("How these groups are formed"):
         st.write(f"Model: {MODEL_ID}; revision: {MODEL_REVISION}. Feedback text is embedded locally on CPU.")
         st.write(f"Complete-linkage cosine thresholds: opportunities {config.opportunity_similarity:.2f}; "
                  f"candidate duplicates {config.duplicate_similarity:.2f}. Settings were selected on synthetic tuning data.")
         st.write("Titles use phrases from the feedback and a representative source request. Similarity is not a confidence probability. "
-                 "Groups are shown by evidence volume; no priority score has been calculated.")
+                 "This group overview is ordered by evidence volume. The separate priority view applies explicit business assumptions.")
     cached = st.session_state.get("semantic_result")
     if cached is None or cached[0] != signature:
         return
@@ -77,3 +78,5 @@ def render_semantic_groups(data):
         distinct_customers=("customer_id", "nunique"),
     ).reset_index()
     st.dataframe(duplicate_summary, hide_index=True, width="stretch")
+
+    render_scoring(data, result)

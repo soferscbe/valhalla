@@ -14,7 +14,7 @@ st.title("ProductLens AI")
 st.caption("From Customer Voice to Evidence-Based Roadmap Decisions.")
 st.header("Upload and validate feedback")
 st.write("Start with synthetic feedback. Check the data before using it to inform product priorities.")
-st.info("Upload and validate feedback, then explore AI-assisted groups with their source evidence. Prioritisation is not implemented yet.")
+st.info("Upload feedback, explore AI-assisted groups, and compare transparent priorities with their source evidence.")
 
 with st.expander("File format and validation rules"):
     st.markdown(

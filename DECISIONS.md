@@ -45,3 +45,11 @@
 **Options:** Adjust settings after seeing held-out/demo weaknesses, hide poor examples, or preserve the experiment and make review limitations explicit.
 
 **Rationale/trade-offs:** Preserves the meaning of the saved holdout. The UI addition changes evidence presentation only; frozen grouping/model/metric source hashes still match. Current groups are candidate interpretations, not validated features. The next scoring stage must expose uncertainty and require human scrutiny. Any future algorithm/settings revision needs a separately documented experiment and must disclose evaluation reuse.
+
+## 9 November 2026 — auditable opportunity scoring and baseline conventions
+
+**Decision:** Implement the predeclared `docs/SCORING_PROTOCOL.md` contract: customer-level ARR resolution, equally weighted customer assessments, maximum effort within each duplicate subgroup summed across subgroups, explicit unknown scores, and a configurable four-factor benefit divided by effort. Preserve original rows and expose account/subgroup evidence. Compare votes, fixed default weighted benefit and a clearly labelled RICE-style proxy. No semantic confidence probability or label lookup enters the formula.
+
+**Options:** Sum every record's account value/effort; impute missing signals; require all optional fields on upload; use the maximum effort for an entire broad group; or expose conservative provisional aggregates with explicit coverage. Use a calibrated impact model versus transparent proxies while no real impact observations exist.
+
+**Rationale/trade-offs:** Repetition must not inflate account ARR or effort. Subgroup scope can include different requests, so summing one estimate per subgroup is more explicit than treating a broad theme as one feature, but still requires engineering/group review. Incomplete active factors leave a candidate unranked rather than implying zero value. Fixed baseline weights remain independent of strategy controls. Dataset-max normalisation is easy to audit but sensitive to the candidate set; common confidence is a scenario assumption. Record these limits and define comparison denominators/ties before seeing results. Initial experiments are descriptive synthetic comparisons, not evidence that one ranking is correct.

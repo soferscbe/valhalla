@@ -1,0 +1,1670 @@
+{
+  "protocol": "scoring-v1",
+  "input_file": "data/generated/v1.0.0_seed42_n1500/inputs/feedback.csv",
+  "input_sha256": "c077195af3079c5d6ac98b1017d58390f9bcde0fefb0408d61acf93dccaebd71",
+  "grouping_config_sha256": "dac06b82fee62e355fb8d63e712aa834da33084ba194abff956d85aeceb79101",
+  "model_id": "sentence-transformers/all-MiniLM-L6-v2",
+  "model_revision": "1110a243fdf4706b3f48f1d95db1a4f5529b4d41",
+  "source_sha256": {
+    "productlens/scoring.py": "69bb6daf5692bec146c073024d8f2c8879d611397d209c3e44dba9121e2bb3fd",
+    "productlens/ranking_experiment.py": "c94b2e8c993c04d695531c5d86abf5f25e9bce9f1cd09ca7ff537fa45aeb4c28",
+    "productlens/ingestion.py": "5d54281ca85b1a4764275d4e1cfba22cecd6ccd3b57d782b31019e7d42c105d6",
+    "productlens/grouping.py": "5410b44a75e6a23c91a36fcb425b53485695ac10f296066c05f5e7d335a705db",
+    "productlens/embeddings.py": "8bc8076d4dc74cf6ef39e488f840a1a22991be6fefad4e8d68351c3daa38ce5f",
+    "docs/SCORING_PROTOCOL.md": "aad5124c492f18a5779fddb4cf8991ebf0a6956d8b198da7cf107bdc27a34d05",
+    "requirements.txt": "c4183e2266bad2c4f8b9127e8c9ce0ddd0a15fff0b0ed9f03f151e39654a27df"
+  },
+  "runtime": {
+    "python": "3.12.14",
+    "platform": "macOS-26.7.1-arm64-arm-64bit",
+    "packages": {
+      "pandas": "2.2.3",
+      "numpy": "2.3.5",
+      "scikit-learn": "1.9.1",
+      "sentence-transformers": "6.2.0",
+      "torch": "2.15.0"
+    }
+  },
+  "grouping_seconds": 1.8822954589995788,
+  "aggregation_scoring_comparison_seconds": 0.27440758400189225,
+  "observations": 1500,
+  "customers": 293,
+  "candidates": 27,
+  "traceability": {
+    "assigned_feedback": 1500,
+    "uploaded_feedback": 1500,
+    "coverage": 1.0
+  },
+  "input_warnings": [
+    "urgency: 75 missing value(s); no values were imputed.",
+    "strategic_alignment: 75 missing value(s); no values were imputed.",
+    "effort: 225 missing value(s); no values were imputed."
+  ],
+  "common_confidence": 0.5,
+  "normalisation": {
+    "reach": 91.0,
+    "arr": 3804024.0
+  },
+  "method_coverage": {
+    "priority_score": 14,
+    "votes_score": 27,
+    "weighted_score": 20,
+    "rice_score": 14
+  },
+  "baseline_comparisons": [
+    {
+      "reference": "priority_score",
+      "comparison": "votes_score",
+      "total_candidates": 27,
+      "reference_coverage": 14,
+      "comparison_coverage": 27,
+      "common_candidates": 14,
+      "k": 5,
+      "spearman": -0.3362637362637363,
+      "top_k_agreement": 0.0,
+      "rank_changes": [
+        {
+          "opportunity_id": "O-31304c037e18",
+          "reference_rank": 9.0,
+          "comparison_rank": 3.0,
+          "rank_change": -6.0
+        },
+        {
+          "opportunity_id": "O-4e6d4265f732",
+          "reference_rank": 5.0,
+          "comparison_rank": 6.0,
+          "rank_change": 1.0
+        },
+        {
+          "opportunity_id": "O-5721faeaf091",
+          "reference_rank": 2.0,
+          "comparison_rank": 9.0,
+          "rank_change": 7.0
+        },
+        {
+          "opportunity_id": "O-6863c74e18d0",
+          "reference_rank": 11.0,
+          "comparison_rank": 5.0,
+          "rank_change": -6.0
+        },
+        {
+          "opportunity_id": "O-88882c7db9c9",
+          "reference_rank": 14.0,
+          "comparison_rank": 1.0,
+          "rank_change": -13.0
+        },
+        {
+          "opportunity_id": "O-9d9b15462d95",
+          "reference_rank": 8.0,
+          "comparison_rank": 11.0,
+          "rank_change": 3.0
+        },
+        {
+          "opportunity_id": "O-9fcd4a18c0bc",
+          "reference_rank": 1.0,
+          "comparison_rank": 10.0,
+          "rank_change": 9.0
+        },
+        {
+          "opportunity_id": "O-a57aa3b41382",
+          "reference_rank": 10.0,
+          "comparison_rank": 2.0,
+          "rank_change": -8.0
+        },
+        {
+          "opportunity_id": "O-bf2e4a6dbb56",
+          "reference_rank": 3.0,
+          "comparison_rank": 12.0,
+          "rank_change": 9.0
+        },
+        {
+          "opportunity_id": "O-dba836c8fc8a",
+          "reference_rank": 6.0,
+          "comparison_rank": 4.0,
+          "rank_change": -2.0
+        },
+        {
+          "opportunity_id": "O-e30d1039474e",
+          "reference_rank": 13.0,
+          "comparison_rank": 14.0,
+          "rank_change": 1.0
+        },
+        {
+          "opportunity_id": "O-e3dc0e2dfb84",
+          "reference_rank": 4.0,
+          "comparison_rank": 8.0,
+          "rank_change": 4.0
+        },
+        {
+          "opportunity_id": "O-f3fbcc20673d",
+          "reference_rank": 7.0,
+          "comparison_rank": 13.0,
+          "rank_change": 6.0
+        },
+        {
+          "opportunity_id": "O-ffe81b44b853",
+          "reference_rank": 12.0,
+          "comparison_rank": 7.0,
+          "rank_change": -5.0
+        }
+      ]
+    },
+    {
+      "reference": "priority_score",
+      "comparison": "weighted_score",
+      "total_candidates": 27,
+      "reference_coverage": 14,
+      "comparison_coverage": 20,
+      "common_candidates": 14,
+      "k": 5,
+      "spearman": -0.24422457022770952,
+      "top_k_agreement": 0.0,
+      "rank_changes": [
+        {
+          "opportunity_id": "O-31304c037e18",
+          "reference_rank": 9.0,
+          "comparison_rank": 3.0,
+          "rank_change": -6.0
+        },
+        {
+          "opportunity_id": "O-4e6d4265f732",
+          "reference_rank": 5.0,
+          "comparison_rank": 7.0,
+          "rank_change": 2.0
+        },
+        {
+          "opportunity_id": "O-5721faeaf091",
+          "reference_rank": 2.0,
+          "comparison_rank": 11.0,
+          "rank_change": 9.0
+        },
+        {
+          "opportunity_id": "O-6863c74e18d0",
+          "reference_rank": 11.0,
+          "comparison_rank": 6.0,
+          "rank_change": -5.0
+        },
+        {
+          "opportunity_id": "O-88882c7db9c9",
+          "reference_rank": 14.0,
+          "comparison_rank": 13.5,
+          "rank_change": -0.5
+        },
+        {
+          "opportunity_id": "O-9d9b15462d95",
+          "reference_rank": 8.0,
+          "comparison_rank": 9.0,
+          "rank_change": 1.0
+        },
+        {
+          "opportunity_id": "O-9fcd4a18c0bc",
+          "reference_rank": 1.0,
+          "comparison_rank": 10.0,
+          "rank_change": 9.0
+        },
+        {
+          "opportunity_id": "O-a57aa3b41382",
+          "reference_rank": 10.0,
+          "comparison_rank": 13.5,
+          "rank_change": 3.5
+        },
+        {
+          "opportunity_id": "O-bf2e4a6dbb56",
+          "reference_rank": 3.0,
+          "comparison_rank": 12.0,
+          "rank_change": 9.0
+        },
+        {
+          "opportunity_id": "O-dba836c8fc8a",
+          "reference_rank": 6.0,
+          "comparison_rank": 5.0,
+          "rank_change": -1.0
+        },
+        {
+          "opportunity_id": "O-e30d1039474e",
+          "reference_rank": 13.0,
+          "comparison_rank": 4.0,
+          "rank_change": -9.0
+        },
+        {
+          "opportunity_id": "O-e3dc0e2dfb84",
+          "reference_rank": 4.0,
+          "comparison_rank": 8.0,
+          "rank_change": 4.0
+        },
+        {
+          "opportunity_id": "O-f3fbcc20673d",
+          "reference_rank": 7.0,
+          "comparison_rank": 2.0,
+          "rank_change": -5.0
+        },
+        {
+          "opportunity_id": "O-ffe81b44b853",
+          "reference_rank": 12.0,
+          "comparison_rank": 1.0,
+          "rank_change": -11.0
+        }
+      ]
+    },
+    {
+      "reference": "priority_score",
+      "comparison": "rice_score",
+      "total_candidates": 27,
+      "reference_coverage": 14,
+      "comparison_coverage": 14,
+      "common_candidates": 14,
+      "k": 5,
+      "spearman": 0.9384615384615385,
+      "top_k_agreement": 0.8,
+      "rank_changes": [
+        {
+          "opportunity_id": "O-31304c037e18",
+          "reference_rank": 9.0,
+          "comparison_rank": 7.0,
+          "rank_change": -2.0
+        },
+        {
+          "opportunity_id": "O-4e6d4265f732",
+          "reference_rank": 5.0,
+          "comparison_rank": 6.0,
+          "rank_change": 1.0
+        },
+        {
+          "opportunity_id": "O-5721faeaf091",
+          "reference_rank": 2.0,
+          "comparison_rank": 2.0,
+          "rank_change": 0.0
+        },
+        {
+          "opportunity_id": "O-6863c74e18d0",
+          "reference_rank": 11.0,
+          "comparison_rank": 9.0,
+          "rank_change": -2.0
+        },
+        {
+          "opportunity_id": "O-88882c7db9c9",
+          "reference_rank": 14.0,
+          "comparison_rank": 14.0,
+          "rank_change": 0.0
+        },
+        {
+          "opportunity_id": "O-9d9b15462d95",
+          "reference_rank": 8.0,
+          "comparison_rank": 8.0,
+          "rank_change": 0.0
+        },
+        {
+          "opportunity_id": "O-9fcd4a18c0bc",
+          "reference_rank": 1.0,
+          "comparison_rank": 1.0,
+          "rank_change": 0.0
+        },
+        {
+          "opportunity_id": "O-a57aa3b41382",
+          "reference_rank": 10.0,
+          "comparison_rank": 12.0,
+          "rank_change": 2.0
+        },
+        {
+          "opportunity_id": "O-bf2e4a6dbb56",
+          "reference_rank": 3.0,
+          "comparison_rank": 3.0,
+          "rank_change": 0.0
+        },
+        {
+          "opportunity_id": "O-dba836c8fc8a",
+          "reference_rank": 6.0,
+          "comparison_rank": 4.0,
+          "rank_change": -2.0
+        },
+        {
+          "opportunity_id": "O-e30d1039474e",
+          "reference_rank": 13.0,
+          "comparison_rank": 13.0,
+          "rank_change": 0.0
+        },
+        {
+          "opportunity_id": "O-e3dc0e2dfb84",
+          "reference_rank": 4.0,
+          "comparison_rank": 5.0,
+          "rank_change": 1.0
+        },
+        {
+          "opportunity_id": "O-f3fbcc20673d",
+          "reference_rank": 7.0,
+          "comparison_rank": 10.0,
+          "rank_change": 3.0
+        },
+        {
+          "opportunity_id": "O-ffe81b44b853",
+          "reference_rank": 12.0,
+          "comparison_rank": 11.0,
+          "rank_change": -1.0
+        }
+      ]
+    }
+  ],
+  "scenarios": {
+    "balanced": {
+      "weights": {
+        "reach": 0.3,
+        "arr": 0.3,
+        "urgency": 0.2,
+        "alignment": 0.2
+      },
+      "comparison": {
+        "reference": "priority_score",
+        "comparison": "scenario",
+        "total_candidates": 27,
+        "reference_coverage": 14,
+        "comparison_coverage": 14,
+        "common_candidates": 14,
+        "k": 5,
+        "spearman": 1.0,
+        "top_k_agreement": 1.0,
+        "rank_changes": [
+          {
+            "opportunity_id": "O-31304c037e18",
+            "reference_rank": 9.0,
+            "comparison_rank": 9.0,
+            "rank_change": 0.0
+          },
+          {
+            "opportunity_id": "O-4e6d4265f732",
+            "reference_rank": 5.0,
+            "comparison_rank": 5.0,
+            "rank_change": 0.0
+          },
+          {
+            "opportunity_id": "O-5721faeaf091",
+            "reference_rank": 2.0,
+            "comparison_rank": 2.0,
+            "rank_change": 0.0
+          },
+          {
+            "opportunity_id": "O-6863c74e18d0",
+            "reference_rank": 11.0,
+            "comparison_rank": 11.0,
+            "rank_change": 0.0
+          },
+          {
+            "opportunity_id": "O-88882c7db9c9",
+            "reference_rank": 14.0,
+            "comparison_rank": 14.0,
+            "rank_change": 0.0
+          },
+          {
+            "opportunity_id": "O-9d9b15462d95",
+            "reference_rank": 8.0,
+            "comparison_rank": 8.0,
+            "rank_change": 0.0
+          },
+          {
+            "opportunity_id": "O-9fcd4a18c0bc",
+            "reference_rank": 1.0,
+            "comparison_rank": 1.0,
+            "rank_change": 0.0
+          },
+          {
+            "opportunity_id": "O-a57aa3b41382",
+            "reference_rank": 10.0,
+            "comparison_rank": 10.0,
+            "rank_change": 0.0
+          },
+          {
+            "opportunity_id": "O-bf2e4a6dbb56",
+            "reference_rank": 3.0,
+            "comparison_rank": 3.0,
+            "rank_change": 0.0
+          },
+          {
+            "opportunity_id": "O-dba836c8fc8a",
+            "reference_rank": 6.0,
+            "comparison_rank": 6.0,
+            "rank_change": 0.0
+          },
+          {
+            "opportunity_id": "O-e30d1039474e",
+            "reference_rank": 13.0,
+            "comparison_rank": 13.0,
+            "rank_change": 0.0
+          },
+          {
+            "opportunity_id": "O-e3dc0e2dfb84",
+            "reference_rank": 4.0,
+            "comparison_rank": 4.0,
+            "rank_change": 0.0
+          },
+          {
+            "opportunity_id": "O-f3fbcc20673d",
+            "reference_rank": 7.0,
+            "comparison_rank": 7.0,
+            "rank_change": 0.0
+          },
+          {
+            "opportunity_id": "O-ffe81b44b853",
+            "reference_rank": 12.0,
+            "comparison_rank": 12.0,
+            "rank_change": 0.0
+          }
+        ]
+      },
+      "segments": [
+        {
+          "segment": "Enterprise",
+          "selected_customers": 41,
+          "total_customers": 99,
+          "coverage": 0.41414141414141414
+        },
+        {
+          "segment": "SMB",
+          "selected_customers": 71,
+          "total_customers": 98,
+          "coverage": 0.7244897959183674
+        },
+        {
+          "segment": "Startup",
+          "selected_customers": 47,
+          "total_customers": 96,
+          "coverage": 0.4895833333333333
+        }
+      ]
+    },
+    "enterprise": {
+      "weights": {
+        "reach": 0.1,
+        "arr": 0.6,
+        "urgency": 0.1,
+        "alignment": 0.2
+      },
+      "comparison": {
+        "reference": "priority_score",
+        "comparison": "scenario",
+        "total_candidates": 27,
+        "reference_coverage": 14,
+        "comparison_coverage": 14,
+        "common_candidates": 14,
+        "k": 5,
+        "spearman": 0.9692307692307693,
+        "top_k_agreement": 0.8,
+        "rank_changes": [
+          {
+            "opportunity_id": "O-31304c037e18",
+            "reference_rank": 9.0,
+            "comparison_rank": 9.0,
+            "rank_change": 0.0
+          },
+          {
+            "opportunity_id": "O-4e6d4265f732",
+            "reference_rank": 5.0,
+            "comparison_rank": 7.0,
+            "rank_change": 2.0
+          },
+          {
+            "opportunity_id": "O-5721faeaf091",
+            "reference_rank": 2.0,
+            "comparison_rank": 2.0,
+            "rank_change": 0.0
+          },
+          {
+            "opportunity_id": "O-6863c74e18d0",
+            "reference_rank": 11.0,
+            "comparison_rank": 10.0,
+            "rank_change": -1.0
+          },
+          {
+            "opportunity_id": "O-88882c7db9c9",
+            "reference_rank": 14.0,
+            "comparison_rank": 14.0,
+            "rank_change": 0.0
+          },
+          {
+            "opportunity_id": "O-9d9b15462d95",
+            "reference_rank": 8.0,
+            "comparison_rank": 8.0,
+            "rank_change": 0.0
+          },
+          {
+            "opportunity_id": "O-9fcd4a18c0bc",
+            "reference_rank": 1.0,
+            "comparison_rank": 1.0,
+            "rank_change": 0.0
+          },
+          {
+            "opportunity_id": "O-a57aa3b41382",
+            "reference_rank": 10.0,
+            "comparison_rank": 12.0,
+            "rank_change": 2.0
+          },
+          {
+            "opportunity_id": "O-bf2e4a6dbb56",
+            "reference_rank": 3.0,
+            "comparison_rank": 3.0,
+            "rank_change": 0.0
+          },
+          {
+            "opportunity_id": "O-dba836c8fc8a",
+            "reference_rank": 6.0,
+            "comparison_rank": 6.0,
+            "rank_change": 0.0
+          },
+          {
+            "opportunity_id": "O-e30d1039474e",
+            "reference_rank": 13.0,
+            "comparison_rank": 13.0,
+            "rank_change": 0.0
+          },
+          {
+            "opportunity_id": "O-e3dc0e2dfb84",
+            "reference_rank": 4.0,
+            "comparison_rank": 4.0,
+            "rank_change": 0.0
+          },
+          {
+            "opportunity_id": "O-f3fbcc20673d",
+            "reference_rank": 7.0,
+            "comparison_rank": 5.0,
+            "rank_change": -2.0
+          },
+          {
+            "opportunity_id": "O-ffe81b44b853",
+            "reference_rank": 12.0,
+            "comparison_rank": 11.0,
+            "rank_change": -1.0
+          }
+        ]
+      },
+      "segments": [
+        {
+          "segment": "Enterprise",
+          "selected_customers": 50,
+          "total_customers": 99,
+          "coverage": 0.5050505050505051
+        },
+        {
+          "segment": "SMB",
+          "selected_customers": 62,
+          "total_customers": 98,
+          "coverage": 0.6326530612244898
+        },
+        {
+          "segment": "Startup",
+          "selected_customers": 34,
+          "total_customers": 96,
+          "coverage": 0.3541666666666667
+        }
+      ]
+    },
+    "reach": {
+      "weights": {
+        "reach": 0.7000000000000001,
+        "arr": 0.10000000000000002,
+        "urgency": 0.10000000000000002,
+        "alignment": 0.10000000000000002
+      },
+      "comparison": {
+        "reference": "priority_score",
+        "comparison": "scenario",
+        "total_candidates": 27,
+        "reference_coverage": 14,
+        "comparison_coverage": 14,
+        "common_candidates": 14,
+        "k": 5,
+        "spearman": 0.956043956043956,
+        "top_k_agreement": 0.8,
+        "rank_changes": [
+          {
+            "opportunity_id": "O-31304c037e18",
+            "reference_rank": 9.0,
+            "comparison_rank": 7.0,
+            "rank_change": -2.0
+          },
+          {
+            "opportunity_id": "O-4e6d4265f732",
+            "reference_rank": 5.0,
+            "comparison_rank": 6.0,
+            "rank_change": 1.0
+          },
+          {
+            "opportunity_id": "O-5721faeaf091",
+            "reference_rank": 2.0,
+            "comparison_rank": 2.0,
+            "rank_change": 0.0
+          },
+          {
+            "opportunity_id": "O-6863c74e18d0",
+            "reference_rank": 11.0,
+            "comparison_rank": 9.0,
+            "rank_change": -2.0
+          },
+          {
+            "opportunity_id": "O-88882c7db9c9",
+            "reference_rank": 14.0,
+            "comparison_rank": 14.0,
+            "rank_change": 0.0
+          },
+          {
+            "opportunity_id": "O-9d9b15462d95",
+            "reference_rank": 8.0,
+            "comparison_rank": 8.0,
+            "rank_change": 0.0
+          },
+          {
+            "opportunity_id": "O-9fcd4a18c0bc",
+            "reference_rank": 1.0,
+            "comparison_rank": 1.0,
+            "rank_change": 0.0
+          },
+          {
+            "opportunity_id": "O-a57aa3b41382",
+            "reference_rank": 10.0,
+            "comparison_rank": 11.0,
+            "rank_change": 1.0
+          },
+          {
+            "opportunity_id": "O-bf2e4a6dbb56",
+            "reference_rank": 3.0,
+            "comparison_rank": 3.0,
+            "rank_change": 0.0
+          },
+          {
+            "opportunity_id": "O-dba836c8fc8a",
+            "reference_rank": 6.0,
+            "comparison_rank": 5.0,
+            "rank_change": -1.0
+          },
+          {
+            "opportunity_id": "O-e30d1039474e",
+            "reference_rank": 13.0,
+            "comparison_rank": 13.0,
+            "rank_change": 0.0
+          },
+          {
+            "opportunity_id": "O-e3dc0e2dfb84",
+            "reference_rank": 4.0,
+            "comparison_rank": 4.0,
+            "rank_change": 0.0
+          },
+          {
+            "opportunity_id": "O-f3fbcc20673d",
+            "reference_rank": 7.0,
+            "comparison_rank": 10.0,
+            "rank_change": 3.0
+          },
+          {
+            "opportunity_id": "O-ffe81b44b853",
+            "reference_rank": 12.0,
+            "comparison_rank": 12.0,
+            "rank_change": 0.0
+          }
+        ]
+      },
+      "segments": [
+        {
+          "segment": "Enterprise",
+          "selected_customers": 46,
+          "total_customers": 99,
+          "coverage": 0.46464646464646464
+        },
+        {
+          "segment": "SMB",
+          "selected_customers": 74,
+          "total_customers": 98,
+          "coverage": 0.7551020408163265
+        },
+        {
+          "segment": "Startup",
+          "selected_customers": 47,
+          "total_customers": 96,
+          "coverage": 0.4895833333333333
+        }
+      ]
+    }
+  },
+  "weight_sensitivity": [
+    {
+      "factor": "reach",
+      "multiplier": 0.8,
+      "weights": {
+        "reach": 0.2553191489361702,
+        "arr": 0.3191489361702128,
+        "urgency": 0.21276595744680854,
+        "alignment": 0.21276595744680854
+      },
+      "comparison": {
+        "reference": "priority_score",
+        "comparison": "perturbed",
+        "total_candidates": 27,
+        "reference_coverage": 14,
+        "comparison_coverage": 14,
+        "common_candidates": 14,
+        "k": 5,
+        "spearman": 0.9956043956043955,
+        "top_k_agreement": 1.0,
+        "rank_changes": [
+          {
+            "opportunity_id": "O-31304c037e18",
+            "reference_rank": 9.0,
+            "comparison_rank": 9.0,
+            "rank_change": 0.0
+          },
+          {
+            "opportunity_id": "O-4e6d4265f732",
+            "reference_rank": 5.0,
+            "comparison_rank": 5.0,
+            "rank_change": 0.0
+          },
+          {
+            "opportunity_id": "O-5721faeaf091",
+            "reference_rank": 2.0,
+            "comparison_rank": 2.0,
+            "rank_change": 0.0
+          },
+          {
+            "opportunity_id": "O-6863c74e18d0",
+            "reference_rank": 11.0,
+            "comparison_rank": 11.0,
+            "rank_change": 0.0
+          },
+          {
+            "opportunity_id": "O-88882c7db9c9",
+            "reference_rank": 14.0,
+            "comparison_rank": 14.0,
+            "rank_change": 0.0
+          },
+          {
+            "opportunity_id": "O-9d9b15462d95",
+            "reference_rank": 8.0,
+            "comparison_rank": 8.0,
+            "rank_change": 0.0
+          },
+          {
+            "opportunity_id": "O-9fcd4a18c0bc",
+            "reference_rank": 1.0,
+            "comparison_rank": 1.0,
+            "rank_change": 0.0
+          },
+          {
+            "opportunity_id": "O-a57aa3b41382",
+            "reference_rank": 10.0,
+            "comparison_rank": 10.0,
+            "rank_change": 0.0
+          },
+          {
+            "opportunity_id": "O-bf2e4a6dbb56",
+            "reference_rank": 3.0,
+            "comparison_rank": 3.0,
+            "rank_change": 0.0
+          },
+          {
+            "opportunity_id": "O-dba836c8fc8a",
+            "reference_rank": 6.0,
+            "comparison_rank": 7.0,
+            "rank_change": 1.0
+          },
+          {
+            "opportunity_id": "O-e30d1039474e",
+            "reference_rank": 13.0,
+            "comparison_rank": 13.0,
+            "rank_change": 0.0
+          },
+          {
+            "opportunity_id": "O-e3dc0e2dfb84",
+            "reference_rank": 4.0,
+            "comparison_rank": 4.0,
+            "rank_change": 0.0
+          },
+          {
+            "opportunity_id": "O-f3fbcc20673d",
+            "reference_rank": 7.0,
+            "comparison_rank": 6.0,
+            "rank_change": -1.0
+          },
+          {
+            "opportunity_id": "O-ffe81b44b853",
+            "reference_rank": 12.0,
+            "comparison_rank": 12.0,
+            "rank_change": 0.0
+          }
+        ]
+      }
+    },
+    {
+      "factor": "reach",
+      "multiplier": 1.2,
+      "weights": {
+        "reach": 0.339622641509434,
+        "arr": 0.28301886792452835,
+        "urgency": 0.1886792452830189,
+        "alignment": 0.1886792452830189
+      },
+      "comparison": {
+        "reference": "priority_score",
+        "comparison": "perturbed",
+        "total_candidates": 27,
+        "reference_coverage": 14,
+        "comparison_coverage": 14,
+        "common_candidates": 14,
+        "k": 5,
+        "spearman": 1.0,
+        "top_k_agreement": 1.0,
+        "rank_changes": [
+          {
+            "opportunity_id": "O-31304c037e18",
+            "reference_rank": 9.0,
+            "comparison_rank": 9.0,
+            "rank_change": 0.0
+          },
+          {
+            "opportunity_id": "O-4e6d4265f732",
+            "reference_rank": 5.0,
+            "comparison_rank": 5.0,
+            "rank_change": 0.0
+          },
+          {
+            "opportunity_id": "O-5721faeaf091",
+            "reference_rank": 2.0,
+            "comparison_rank": 2.0,
+            "rank_change": 0.0
+          },
+          {
+            "opportunity_id": "O-6863c74e18d0",
+            "reference_rank": 11.0,
+            "comparison_rank": 11.0,
+            "rank_change": 0.0
+          },
+          {
+            "opportunity_id": "O-88882c7db9c9",
+            "reference_rank": 14.0,
+            "comparison_rank": 14.0,
+            "rank_change": 0.0
+          },
+          {
+            "opportunity_id": "O-9d9b15462d95",
+            "reference_rank": 8.0,
+            "comparison_rank": 8.0,
+            "rank_change": 0.0
+          },
+          {
+            "opportunity_id": "O-9fcd4a18c0bc",
+            "reference_rank": 1.0,
+            "comparison_rank": 1.0,
+            "rank_change": 0.0
+          },
+          {
+            "opportunity_id": "O-a57aa3b41382",
+            "reference_rank": 10.0,
+            "comparison_rank": 10.0,
+            "rank_change": 0.0
+          },
+          {
+            "opportunity_id": "O-bf2e4a6dbb56",
+            "reference_rank": 3.0,
+            "comparison_rank": 3.0,
+            "rank_change": 0.0
+          },
+          {
+            "opportunity_id": "O-dba836c8fc8a",
+            "reference_rank": 6.0,
+            "comparison_rank": 6.0,
+            "rank_change": 0.0
+          },
+          {
+            "opportunity_id": "O-e30d1039474e",
+            "reference_rank": 13.0,
+            "comparison_rank": 13.0,
+            "rank_change": 0.0
+          },
+          {
+            "opportunity_id": "O-e3dc0e2dfb84",
+            "reference_rank": 4.0,
+            "comparison_rank": 4.0,
+            "rank_change": 0.0
+          },
+          {
+            "opportunity_id": "O-f3fbcc20673d",
+            "reference_rank": 7.0,
+            "comparison_rank": 7.0,
+            "rank_change": 0.0
+          },
+          {
+            "opportunity_id": "O-ffe81b44b853",
+            "reference_rank": 12.0,
+            "comparison_rank": 12.0,
+            "rank_change": 0.0
+          }
+        ]
+      }
+    },
+    {
+      "factor": "arr",
+      "multiplier": 0.8,
+      "weights": {
+        "reach": 0.3191489361702128,
+        "arr": 0.2553191489361702,
+        "urgency": 0.21276595744680854,
+        "alignment": 0.21276595744680854
+      },
+      "comparison": {
+        "reference": "priority_score",
+        "comparison": "perturbed",
+        "total_candidates": 27,
+        "reference_coverage": 14,
+        "comparison_coverage": 14,
+        "common_candidates": 14,
+        "k": 5,
+        "spearman": 1.0,
+        "top_k_agreement": 1.0,
+        "rank_changes": [
+          {
+            "opportunity_id": "O-31304c037e18",
+            "reference_rank": 9.0,
+            "comparison_rank": 9.0,
+            "rank_change": 0.0
+          },
+          {
+            "opportunity_id": "O-4e6d4265f732",
+            "reference_rank": 5.0,
+            "comparison_rank": 5.0,
+            "rank_change": 0.0
+          },
+          {
+            "opportunity_id": "O-5721faeaf091",
+            "reference_rank": 2.0,
+            "comparison_rank": 2.0,
+            "rank_change": 0.0
+          },
+          {
+            "opportunity_id": "O-6863c74e18d0",
+            "reference_rank": 11.0,
+            "comparison_rank": 11.0,
+            "rank_change": 0.0
+          },
+          {
+            "opportunity_id": "O-88882c7db9c9",
+            "reference_rank": 14.0,
+            "comparison_rank": 14.0,
+            "rank_change": 0.0
+          },
+          {
+            "opportunity_id": "O-9d9b15462d95",
+            "reference_rank": 8.0,
+            "comparison_rank": 8.0,
+            "rank_change": 0.0
+          },
+          {
+            "opportunity_id": "O-9fcd4a18c0bc",
+            "reference_rank": 1.0,
+            "comparison_rank": 1.0,
+            "rank_change": 0.0
+          },
+          {
+            "opportunity_id": "O-a57aa3b41382",
+            "reference_rank": 10.0,
+            "comparison_rank": 10.0,
+            "rank_change": 0.0
+          },
+          {
+            "opportunity_id": "O-bf2e4a6dbb56",
+            "reference_rank": 3.0,
+            "comparison_rank": 3.0,
+            "rank_change": 0.0
+          },
+          {
+            "opportunity_id": "O-dba836c8fc8a",
+            "reference_rank": 6.0,
+            "comparison_rank": 6.0,
+            "rank_change": 0.0
+          },
+          {
+            "opportunity_id": "O-e30d1039474e",
+            "reference_rank": 13.0,
+            "comparison_rank": 13.0,
+            "rank_change": 0.0
+          },
+          {
+            "opportunity_id": "O-e3dc0e2dfb84",
+            "reference_rank": 4.0,
+            "comparison_rank": 4.0,
+            "rank_change": 0.0
+          },
+          {
+            "opportunity_id": "O-f3fbcc20673d",
+            "reference_rank": 7.0,
+            "comparison_rank": 7.0,
+            "rank_change": 0.0
+          },
+          {
+            "opportunity_id": "O-ffe81b44b853",
+            "reference_rank": 12.0,
+            "comparison_rank": 12.0,
+            "rank_change": 0.0
+          }
+        ]
+      }
+    },
+    {
+      "factor": "arr",
+      "multiplier": 1.2,
+      "weights": {
+        "reach": 0.28301886792452835,
+        "arr": 0.339622641509434,
+        "urgency": 0.1886792452830189,
+        "alignment": 0.1886792452830189
+      },
+      "comparison": {
+        "reference": "priority_score",
+        "comparison": "perturbed",
+        "total_candidates": 27,
+        "reference_coverage": 14,
+        "comparison_coverage": 14,
+        "common_candidates": 14,
+        "k": 5,
+        "spearman": 1.0,
+        "top_k_agreement": 1.0,
+        "rank_changes": [
+          {
+            "opportunity_id": "O-31304c037e18",
+            "reference_rank": 9.0,
+            "comparison_rank": 9.0,
+            "rank_change": 0.0
+          },
+          {
+            "opportunity_id": "O-4e6d4265f732",
+            "reference_rank": 5.0,
+            "comparison_rank": 5.0,
+            "rank_change": 0.0
+          },
+          {
+            "opportunity_id": "O-5721faeaf091",
+            "reference_rank": 2.0,
+            "comparison_rank": 2.0,
+            "rank_change": 0.0
+          },
+          {
+            "opportunity_id": "O-6863c74e18d0",
+            "reference_rank": 11.0,
+            "comparison_rank": 11.0,
+            "rank_change": 0.0
+          },
+          {
+            "opportunity_id": "O-88882c7db9c9",
+            "reference_rank": 14.0,
+            "comparison_rank": 14.0,
+            "rank_change": 0.0
+          },
+          {
+            "opportunity_id": "O-9d9b15462d95",
+            "reference_rank": 8.0,
+            "comparison_rank": 8.0,
+            "rank_change": 0.0
+          },
+          {
+            "opportunity_id": "O-9fcd4a18c0bc",
+            "reference_rank": 1.0,
+            "comparison_rank": 1.0,
+            "rank_change": 0.0
+          },
+          {
+            "opportunity_id": "O-a57aa3b41382",
+            "reference_rank": 10.0,
+            "comparison_rank": 10.0,
+            "rank_change": 0.0
+          },
+          {
+            "opportunity_id": "O-bf2e4a6dbb56",
+            "reference_rank": 3.0,
+            "comparison_rank": 3.0,
+            "rank_change": 0.0
+          },
+          {
+            "opportunity_id": "O-dba836c8fc8a",
+            "reference_rank": 6.0,
+            "comparison_rank": 6.0,
+            "rank_change": 0.0
+          },
+          {
+            "opportunity_id": "O-e30d1039474e",
+            "reference_rank": 13.0,
+            "comparison_rank": 13.0,
+            "rank_change": 0.0
+          },
+          {
+            "opportunity_id": "O-e3dc0e2dfb84",
+            "reference_rank": 4.0,
+            "comparison_rank": 4.0,
+            "rank_change": 0.0
+          },
+          {
+            "opportunity_id": "O-f3fbcc20673d",
+            "reference_rank": 7.0,
+            "comparison_rank": 7.0,
+            "rank_change": 0.0
+          },
+          {
+            "opportunity_id": "O-ffe81b44b853",
+            "reference_rank": 12.0,
+            "comparison_rank": 12.0,
+            "rank_change": 0.0
+          }
+        ]
+      }
+    },
+    {
+      "factor": "urgency",
+      "multiplier": 0.8,
+      "weights": {
+        "reach": 0.3125,
+        "arr": 0.3125,
+        "urgency": 0.1666666666666667,
+        "alignment": 0.20833333333333334
+      },
+      "comparison": {
+        "reference": "priority_score",
+        "comparison": "perturbed",
+        "total_candidates": 27,
+        "reference_coverage": 14,
+        "comparison_coverage": 14,
+        "common_candidates": 14,
+        "k": 5,
+        "spearman": 1.0,
+        "top_k_agreement": 1.0,
+        "rank_changes": [
+          {
+            "opportunity_id": "O-31304c037e18",
+            "reference_rank": 9.0,
+            "comparison_rank": 9.0,
+            "rank_change": 0.0
+          },
+          {
+            "opportunity_id": "O-4e6d4265f732",
+            "reference_rank": 5.0,
+            "comparison_rank": 5.0,
+            "rank_change": 0.0
+          },
+          {
+            "opportunity_id": "O-5721faeaf091",
+            "reference_rank": 2.0,
+            "comparison_rank": 2.0,
+            "rank_change": 0.0
+          },
+          {
+            "opportunity_id": "O-6863c74e18d0",
+            "reference_rank": 11.0,
+            "comparison_rank": 11.0,
+            "rank_change": 0.0
+          },
+          {
+            "opportunity_id": "O-88882c7db9c9",
+            "reference_rank": 14.0,
+            "comparison_rank": 14.0,
+            "rank_change": 0.0
+          },
+          {
+            "opportunity_id": "O-9d9b15462d95",
+            "reference_rank": 8.0,
+            "comparison_rank": 8.0,
+            "rank_change": 0.0
+          },
+          {
+            "opportunity_id": "O-9fcd4a18c0bc",
+            "reference_rank": 1.0,
+            "comparison_rank": 1.0,
+            "rank_change": 0.0
+          },
+          {
+            "opportunity_id": "O-a57aa3b41382",
+            "reference_rank": 10.0,
+            "comparison_rank": 10.0,
+            "rank_change": 0.0
+          },
+          {
+            "opportunity_id": "O-bf2e4a6dbb56",
+            "reference_rank": 3.0,
+            "comparison_rank": 3.0,
+            "rank_change": 0.0
+          },
+          {
+            "opportunity_id": "O-dba836c8fc8a",
+            "reference_rank": 6.0,
+            "comparison_rank": 6.0,
+            "rank_change": 0.0
+          },
+          {
+            "opportunity_id": "O-e30d1039474e",
+            "reference_rank": 13.0,
+            "comparison_rank": 13.0,
+            "rank_change": 0.0
+          },
+          {
+            "opportunity_id": "O-e3dc0e2dfb84",
+            "reference_rank": 4.0,
+            "comparison_rank": 4.0,
+            "rank_change": 0.0
+          },
+          {
+            "opportunity_id": "O-f3fbcc20673d",
+            "reference_rank": 7.0,
+            "comparison_rank": 7.0,
+            "rank_change": 0.0
+          },
+          {
+            "opportunity_id": "O-ffe81b44b853",
+            "reference_rank": 12.0,
+            "comparison_rank": 12.0,
+            "rank_change": 0.0
+          }
+        ]
+      }
+    },
+    {
+      "factor": "urgency",
+      "multiplier": 1.2,
+      "weights": {
+        "reach": 0.28846153846153844,
+        "arr": 0.28846153846153844,
+        "urgency": 0.23076923076923075,
+        "alignment": 0.19230769230769232
+      },
+      "comparison": {
+        "reference": "priority_score",
+        "comparison": "perturbed",
+        "total_candidates": 27,
+        "reference_coverage": 14,
+        "comparison_coverage": 14,
+        "common_candidates": 14,
+        "k": 5,
+        "spearman": 1.0,
+        "top_k_agreement": 1.0,
+        "rank_changes": [
+          {
+            "opportunity_id": "O-31304c037e18",
+            "reference_rank": 9.0,
+            "comparison_rank": 9.0,
+            "rank_change": 0.0
+          },
+          {
+            "opportunity_id": "O-4e6d4265f732",
+            "reference_rank": 5.0,
+            "comparison_rank": 5.0,
+            "rank_change": 0.0
+          },
+          {
+            "opportunity_id": "O-5721faeaf091",
+            "reference_rank": 2.0,
+            "comparison_rank": 2.0,
+            "rank_change": 0.0
+          },
+          {
+            "opportunity_id": "O-6863c74e18d0",
+            "reference_rank": 11.0,
+            "comparison_rank": 11.0,
+            "rank_change": 0.0
+          },
+          {
+            "opportunity_id": "O-88882c7db9c9",
+            "reference_rank": 14.0,
+            "comparison_rank": 14.0,
+            "rank_change": 0.0
+          },
+          {
+            "opportunity_id": "O-9d9b15462d95",
+            "reference_rank": 8.0,
+            "comparison_rank": 8.0,
+            "rank_change": 0.0
+          },
+          {
+            "opportunity_id": "O-9fcd4a18c0bc",
+            "reference_rank": 1.0,
+            "comparison_rank": 1.0,
+            "rank_change": 0.0
+          },
+          {
+            "opportunity_id": "O-a57aa3b41382",
+            "reference_rank": 10.0,
+            "comparison_rank": 10.0,
+            "rank_change": 0.0
+          },
+          {
+            "opportunity_id": "O-bf2e4a6dbb56",
+            "reference_rank": 3.0,
+            "comparison_rank": 3.0,
+            "rank_change": 0.0
+          },
+          {
+            "opportunity_id": "O-dba836c8fc8a",
+            "reference_rank": 6.0,
+            "comparison_rank": 6.0,
+            "rank_change": 0.0
+          },
+          {
+            "opportunity_id": "O-e30d1039474e",
+            "reference_rank": 13.0,
+            "comparison_rank": 13.0,
+            "rank_change": 0.0
+          },
+          {
+            "opportunity_id": "O-e3dc0e2dfb84",
+            "reference_rank": 4.0,
+            "comparison_rank": 4.0,
+            "rank_change": 0.0
+          },
+          {
+            "opportunity_id": "O-f3fbcc20673d",
+            "reference_rank": 7.0,
+            "comparison_rank": 7.0,
+            "rank_change": 0.0
+          },
+          {
+            "opportunity_id": "O-ffe81b44b853",
+            "reference_rank": 12.0,
+            "comparison_rank": 12.0,
+            "rank_change": 0.0
+          }
+        ]
+      }
+    },
+    {
+      "factor": "alignment",
+      "multiplier": 0.8,
+      "weights": {
+        "reach": 0.31249999999999994,
+        "arr": 0.31249999999999994,
+        "urgency": 0.20833333333333331,
+        "alignment": 0.16666666666666669
+      },
+      "comparison": {
+        "reference": "priority_score",
+        "comparison": "perturbed",
+        "total_candidates": 27,
+        "reference_coverage": 14,
+        "comparison_coverage": 14,
+        "common_candidates": 14,
+        "k": 5,
+        "spearman": 1.0,
+        "top_k_agreement": 1.0,
+        "rank_changes": [
+          {
+            "opportunity_id": "O-31304c037e18",
+            "reference_rank": 9.0,
+            "comparison_rank": 9.0,
+            "rank_change": 0.0
+          },
+          {
+            "opportunity_id": "O-4e6d4265f732",
+            "reference_rank": 5.0,
+            "comparison_rank": 5.0,
+            "rank_change": 0.0
+          },
+          {
+            "opportunity_id": "O-5721faeaf091",
+            "reference_rank": 2.0,
+            "comparison_rank": 2.0,
+            "rank_change": 0.0
+          },
+          {
+            "opportunity_id": "O-6863c74e18d0",
+            "reference_rank": 11.0,
+            "comparison_rank": 11.0,
+            "rank_change": 0.0
+          },
+          {
+            "opportunity_id": "O-88882c7db9c9",
+            "reference_rank": 14.0,
+            "comparison_rank": 14.0,
+            "rank_change": 0.0
+          },
+          {
+            "opportunity_id": "O-9d9b15462d95",
+            "reference_rank": 8.0,
+            "comparison_rank": 8.0,
+            "rank_change": 0.0
+          },
+          {
+            "opportunity_id": "O-9fcd4a18c0bc",
+            "reference_rank": 1.0,
+            "comparison_rank": 1.0,
+            "rank_change": 0.0
+          },
+          {
+            "opportunity_id": "O-a57aa3b41382",
+            "reference_rank": 10.0,
+            "comparison_rank": 10.0,
+            "rank_change": 0.0
+          },
+          {
+            "opportunity_id": "O-bf2e4a6dbb56",
+            "reference_rank": 3.0,
+            "comparison_rank": 3.0,
+            "rank_change": 0.0
+          },
+          {
+            "opportunity_id": "O-dba836c8fc8a",
+            "reference_rank": 6.0,
+            "comparison_rank": 6.0,
+            "rank_change": 0.0
+          },
+          {
+            "opportunity_id": "O-e30d1039474e",
+            "reference_rank": 13.0,
+            "comparison_rank": 13.0,
+            "rank_change": 0.0
+          },
+          {
+            "opportunity_id": "O-e3dc0e2dfb84",
+            "reference_rank": 4.0,
+            "comparison_rank": 4.0,
+            "rank_change": 0.0
+          },
+          {
+            "opportunity_id": "O-f3fbcc20673d",
+            "reference_rank": 7.0,
+            "comparison_rank": 7.0,
+            "rank_change": 0.0
+          },
+          {
+            "opportunity_id": "O-ffe81b44b853",
+            "reference_rank": 12.0,
+            "comparison_rank": 12.0,
+            "rank_change": 0.0
+          }
+        ]
+      }
+    },
+    {
+      "factor": "alignment",
+      "multiplier": 1.2,
+      "weights": {
+        "reach": 0.28846153846153844,
+        "arr": 0.28846153846153844,
+        "urgency": 0.19230769230769232,
+        "alignment": 0.23076923076923075
+      },
+      "comparison": {
+        "reference": "priority_score",
+        "comparison": "perturbed",
+        "total_candidates": 27,
+        "reference_coverage": 14,
+        "comparison_coverage": 14,
+        "common_candidates": 14,
+        "k": 5,
+        "spearman": 1.0,
+        "top_k_agreement": 1.0,
+        "rank_changes": [
+          {
+            "opportunity_id": "O-31304c037e18",
+            "reference_rank": 9.0,
+            "comparison_rank": 9.0,
+            "rank_change": 0.0
+          },
+          {
+            "opportunity_id": "O-4e6d4265f732",
+            "reference_rank": 5.0,
+            "comparison_rank": 5.0,
+            "rank_change": 0.0
+          },
+          {
+            "opportunity_id": "O-5721faeaf091",
+            "reference_rank": 2.0,
+            "comparison_rank": 2.0,
+            "rank_change": 0.0
+          },
+          {
+            "opportunity_id": "O-6863c74e18d0",
+            "reference_rank": 11.0,
+            "comparison_rank": 11.0,
+            "rank_change": 0.0
+          },
+          {
+            "opportunity_id": "O-88882c7db9c9",
+            "reference_rank": 14.0,
+            "comparison_rank": 14.0,
+            "rank_change": 0.0
+          },
+          {
+            "opportunity_id": "O-9d9b15462d95",
+            "reference_rank": 8.0,
+            "comparison_rank": 8.0,
+            "rank_change": 0.0
+          },
+          {
+            "opportunity_id": "O-9fcd4a18c0bc",
+            "reference_rank": 1.0,
+            "comparison_rank": 1.0,
+            "rank_change": 0.0
+          },
+          {
+            "opportunity_id": "O-a57aa3b41382",
+            "reference_rank": 10.0,
+            "comparison_rank": 10.0,
+            "rank_change": 0.0
+          },
+          {
+            "opportunity_id": "O-bf2e4a6dbb56",
+            "reference_rank": 3.0,
+            "comparison_rank": 3.0,
+            "rank_change": 0.0
+          },
+          {
+            "opportunity_id": "O-dba836c8fc8a",
+            "reference_rank": 6.0,
+            "comparison_rank": 6.0,
+            "rank_change": 0.0
+          },
+          {
+            "opportunity_id": "O-e30d1039474e",
+            "reference_rank": 13.0,
+            "comparison_rank": 13.0,
+            "rank_change": 0.0
+          },
+          {
+            "opportunity_id": "O-e3dc0e2dfb84",
+            "reference_rank": 4.0,
+            "comparison_rank": 4.0,
+            "rank_change": 0.0
+          },
+          {
+            "opportunity_id": "O-f3fbcc20673d",
+            "reference_rank": 7.0,
+            "comparison_rank": 7.0,
+            "rank_change": 0.0
+          },
+          {
+            "opportunity_id": "O-ffe81b44b853",
+            "reference_rank": 12.0,
+            "comparison_rank": 12.0,
+            "rank_change": 0.0
+          }
+        ]
+      }
+    }
+  ],
+  "baseline_segments": {
+    "priority_score": [
+      {
+        "segment": "Enterprise",
+        "selected_customers": 41,
+        "total_customers": 99,
+        "coverage": 0.41414141414141414
+      },
+      {
+        "segment": "SMB",
+        "selected_customers": 71,
+        "total_customers": 98,
+        "coverage": 0.7244897959183674
+      },
+      {
+        "segment": "Startup",
+        "selected_customers": 47,
+        "total_customers": 96,
+        "coverage": 0.4895833333333333
+      }
+    ],
+    "votes_score": [
+      {
+        "segment": "Enterprise",
+        "selected_customers": 35,
+        "total_customers": 99,
+        "coverage": 0.35353535353535354
+      },
+      {
+        "segment": "SMB",
+        "selected_customers": 69,
+        "total_customers": 98,
+        "coverage": 0.7040816326530612
+      },
+      {
+        "segment": "Startup",
+        "selected_customers": 53,
+        "total_customers": 96,
+        "coverage": 0.5520833333333334
+      }
+    ],
+    "weighted_score": [
+      {
+        "segment": "Enterprise",
+        "selected_customers": 88,
+        "total_customers": 99,
+        "coverage": 0.8888888888888888
+      },
+      {
+        "segment": "SMB",
+        "selected_customers": 57,
+        "total_customers": 98,
+        "coverage": 0.5816326530612245
+      },
+      {
+        "segment": "Startup",
+        "selected_customers": 37,
+        "total_customers": 96,
+        "coverage": 0.3854166666666667
+      }
+    ],
+    "rice_score": [
+      {
+        "segment": "Enterprise",
+        "selected_customers": 46,
+        "total_customers": 99,
+        "coverage": 0.46464646464646464
+      },
+      {
+        "segment": "SMB",
+        "selected_customers": 74,
+        "total_customers": 98,
+        "coverage": 0.7551020408163265
+      },
+      {
+        "segment": "Startup",
+        "selected_customers": 47,
+        "total_customers": 96,
+        "coverage": 0.4895833333333333
+      }
+    ]
+  },
+  "limits": [
+    "Synthetic descriptive comparisons; no ranking ground truth or superiority claim.",
+    "Same frozen grouping across all methods; no manual-workflow comparison or measured time saving.",
+    "Effort and impact are provisional proxies; missing inputs restrict common comparisons.",
+    "Only weight perturbations tested here; grouping/data robustness and user study remain unmeasured."
+  ]
+}
