@@ -1,0 +1,7 @@
+feedback_id,customer_id,feedback_text,segment,request_date,account_value,votes,urgency,strategic_alignment,effort
+F001,C001,Allow scheduled exports of usage reports.,SMB,2026-10-01,1200,2,2,3,3
+F002,C002,We need audit logs for administrator changes.,Enterprise,2026-10-03,24000,1,5,5,8
+F003,C001,Please email our usage report every Monday.,SMB,2026-10-08,1200,1,3,3,3
+F004,C003,Improve keyboard navigation on the dashboard.,Startup,2026-10-10,600,3,3,4,5
+F005,C004,Let admins export a history of security changes.,Enterprise,2026-10-20,36000,1,4,5,8
+F006,C005,Send an alert before we reach our usage limit.,SMB,2026-11-01,2400,2,4,4,3

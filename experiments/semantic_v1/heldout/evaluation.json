@@ -1,0 +1,142 @@
+{
+  "challenge_counts": {
+    "ambiguous": 13,
+    "overlapping": 25
+  },
+  "configuration": {
+    "dataset_content_sha256": "d05cba31a08bd3f2f00707d5f81d045b973e0aea4f8119b06d4b54ff484d7e37",
+    "duplicate_candidates": [
+      {
+        "duplicate_similarity": 0.55,
+        "unique_text_duplicate_f1": 0.5771812080536913
+      },
+      {
+        "duplicate_similarity": 0.65,
+        "unique_text_duplicate_f1": 0.4411764705882353
+      },
+      {
+        "duplicate_similarity": 0.75,
+        "unique_text_duplicate_f1": 0.31746031746031744
+      },
+      {
+        "duplicate_similarity": 0.85,
+        "unique_text_duplicate_f1": 0.31746031746031744
+      }
+    ],
+    "grouping": {
+      "duplicate_similarity": 0.55,
+      "opportunity_similarity": 0.2
+    },
+    "input_sha256": "23144b88d04544dd1732e1aae1774ae5ffb22dad87a691c246c26c7ad7fbd245",
+    "max_tokens": 256,
+    "model_id": "sentence-transformers/all-MiniLM-L6-v2",
+    "model_revision": "1110a243fdf4706b3f48f1d95db1a4f5529b4d41",
+    "objective": "Maximise unique-normalised-text theme ARI, then unique-text duplicate pair F1; each tie chooses higher similarity. No held-out search.",
+    "opportunity_candidates": [
+      {
+        "opportunity_similarity": 0.2,
+        "unique_text_theme_ari": 0.7780979827089337
+      },
+      {
+        "opportunity_similarity": 0.3,
+        "unique_text_theme_ari": 0.5338470005503577
+      },
+      {
+        "opportunity_similarity": 0.4,
+        "unique_text_theme_ari": 0.45308157232981866
+      },
+      {
+        "opportunity_similarity": 0.5,
+        "unique_text_theme_ari": 0.3341902313624679
+      },
+      {
+        "opportunity_similarity": 0.6,
+        "unique_text_theme_ari": 0.22375215146299485
+      }
+    ],
+    "protocol": "semantic-v1",
+    "runtime": {
+      "numpy": "2.3.5",
+      "pandas": "2.2.3",
+      "scikit-learn": "1.9.1",
+      "sentence-transformers": "6.2.0",
+      "torch": "2.15.0",
+      "transformers": "5.22.1"
+    },
+    "selected_on": "tuning only",
+    "source_sha256": {
+      "embeddings.py": "8bc8076d4dc74cf6ef39e488f840a1a22991be6fefad4e8d68351c3daa38ce5f",
+      "grouping.py": "5410b44a75e6a23c91a36fcb425b53485695ac10f296066c05f5e7d335a705db",
+      "grouping_metrics.py": "0ae0b92579a4f62557eba45f5db794e348268945e2fdd62d0dda52e6194157ce",
+      "semantic_experiment.py": "1667f9ae584d1a415e37bf8e6eb113e90f82124c2c0e6267b294c87024079d56"
+    }
+  },
+  "device": "cpu",
+  "frozen_config_sha256": "dac06b82fee62e355fb8d63e712aa834da33084ba194abff956d85aeceb79101",
+  "metrics": {
+    "eligible_rows": 212,
+    "excluded_challenge_rows": 38,
+    "rows": {
+      "count": 212,
+      "duplicate_pairs": {
+        "f1": 0.664038811400849,
+        "false_negative": 1072,
+        "false_positive": 36,
+        "pair_count": 22366,
+        "precision": 0.9681697612732095,
+        "recall": 0.5053068758652515,
+        "true_positive": 1095
+      },
+      "nonidentical_duplicate_pairs": {
+        "f1": 0.5040286481647269,
+        "false_negative": 1072,
+        "false_positive": 36,
+        "pair_count": 21834,
+        "precision": 0.9398998330550918,
+        "recall": 0.3443425076452599,
+        "true_positive": 563
+      },
+      "opportunity_groups": 10,
+      "theme_ari": 0.5991291665301282,
+      "theme_nmi": 0.8089649055667731
+    },
+    "total_rows": 250,
+    "unique_texts": {
+      "count": 56,
+      "duplicate_pairs": {
+        "f1": 0.6329113924050633,
+        "false_negative": 56,
+        "false_positive": 2,
+        "pair_count": 1540,
+        "precision": 0.9615384615384616,
+        "recall": 0.4716981132075472,
+        "true_positive": 50
+      },
+      "nonidentical_duplicate_pairs": {
+        "f1": 0.6329113924050633,
+        "false_negative": 56,
+        "false_positive": 2,
+        "pair_count": 1540,
+        "precision": 0.9615384615384616,
+        "recall": 0.4716981132075472,
+        "true_positive": 50
+      },
+      "opportunity_groups": 10,
+      "theme_ari": 0.6064535815088871,
+      "theme_nmi": 0.8282003548991629
+    }
+  },
+  "opportunity_count_all_rows": 12,
+  "peak_process_rss_mib": 566.921875,
+  "platform": "macOS-26.7.1-arm64-arm-64bit",
+  "protocol": "semantic-v1",
+  "python": "3.12.14",
+  "split": "evaluation",
+  "timing_caveat": "Single local run including cached model load; not a productivity benchmark or cloud resource guarantee.",
+  "timing_seconds": {
+    "group_and_summarise": 0.02865712499624351,
+    "load_and_encode": 1.743852292005613
+  },
+  "torch_threads": 2,
+  "truncated_rows": 0
+}
