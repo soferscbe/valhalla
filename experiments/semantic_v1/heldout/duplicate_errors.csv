@@ -1,0 +1,59 @@
+left_id,right_id,left_text,right_text,error
+F000001,F000064,Let me choose an icon for each dashboard tile.,Custom symbols on overview cards would help me recognise them.,missed_duplicate
+F000001,F000243,Let me choose an icon for each dashboard tile.,pls help: Custom symbols on overview cards would help me recognise them.,missed_duplicate
+F000003,F000055,We only notice limits after hitting them; add an early threshold alert.,Send a warning before our included quota runs out.,missed_duplicate
+F000003,F000087,We only notice limits after hitting them; add an early threshold alert.,Notify us when we reach eighty percent of our monthly usage allowance.,missed_duplicate
+F000003,F000455,We only notice limits after hitting them; add an early threshold alert.,pls help: Send a warning before our included quota runs out.,missed_duplicate
+F000005,F000018,send quota warnings to a configurable list of team members.,Our billing contact is not the only person who needs usage alerts; add more recipients.,missed_duplicate
+F000005,F000055,send quota warnings to a configurable list of team members.,Send a warning before our included quota runs out.,false_duplicate
+F000005,F000164,send quota warnings to a configurable list of team members.,Let us choose several email addresses for consumption notifications.,missed_duplicate
+F000005,F000355,send quota warnings to a configurable list of team members.,pls help: Our billing contact is not the only person who needs usage alerts; add more recipients.,missed_duplicate
+F000005,F000455,send quota warnings to a configurable list of team members.,pls help: Send a warning before our included quota runs out.,false_duplicate
+F000007,F000171,I download and send the same report each week; please automate that email.,Can we schedule a weekly usage summary to arrive in our inbox?,missed_duplicate
+F000007,F000344,I download and send the same report each week; please automate that email.,pls help: Can we schedule a weekly usage summary to arrive in our inbox?,missed_duplicate
+F000012,F000101,Changing ownership one item at a time is tedious; support bulk reassignment.,Let us select a batch of items and give all of them to another teammate.,missed_duplicate
+F000013,F000054,Add a compact view with less space between dashboard cards.,The overview has too much padding. Offer a denser layout.,missed_duplicate
+F000013,F000212,Add a compact view with less space between dashboard cards.,pls help: The overview has too much padding. Offer a denser layout.,missed_duplicate
+F000016,F000064,Please allow personalising the little icons used on dashboard widgets.,Custom symbols on overview cards would help me recognise them.,missed_duplicate
+F000016,F000243,Please allow personalising the little icons used on dashboard widgets.,pls help: Custom symbols on overview cards would help me recognise them.,missed_duplicate
+F000017,F000102,Keep audit events for a full year before deleting them.,Our security review needs twelve months of retained activity history.,missed_duplicate
+F000017,F000128,Keep audit events for a full year before deleting them.,pls help: Our security review needs twelve months of retained activity history.,missed_duplicate
+F000027,F000054,I want more tiles visible at once without scrolling; reduce dashboard spacing.,The overview has too much padding. Offer a denser layout.,missed_duplicate
+F000027,F000212,I want more tiles visible at once without scrolling; reduce dashboard spacing.,pls help: The overview has too much padding. Offer a denser layout.,missed_duplicate
+F000032,F000101,Reassign the owner of many selected records in one action.,Let us select a batch of items and give all of them to another teammate.,missed_duplicate
+F000034,F000074,"If a batch update changes the wrong items, we need a single rollback action.",allow undoing the most recent bulk edit.,missed_duplicate
+F000034,F000105,"If a batch update changes the wrong items, we need a single rollback action.",Please restore the previous values after an accidental mass update.,missed_duplicate
+F000034,F000147,"If a batch update changes the wrong items, we need a single rollback action.",pls help: Allow undoing the most recent bulk edit.,missed_duplicate
+F000048,F000171,Email the usage report to our team automatically every Monday.,Can we schedule a weekly usage summary to arrive in our inbox?,missed_duplicate
+F000048,F000344,Email the usage report to our team automatically every Monday.,pls help: Can we schedule a weekly usage summary to arrive in our inbox?,missed_duplicate
+F000054,F000369,The overview has too much padding. Offer a denser layout.,pls help: Add a compact view with less space between dashboard cards.,missed_duplicate
+F000054,F000442,The overview has too much padding. Offer a denser layout.,pls help: I want more tiles visible at once without scrolling; reduce dashboard spacing.,missed_duplicate
+F000055,F000087,Send a warning before our included quota runs out.,Notify us when we reach eighty percent of our monthly usage allowance.,missed_duplicate
+F000058,F000092,give reviewers a file containing the audit entries between two dates.,pls help: We need to download historical security events for an external review.,missed_duplicate
+F000058,F000150,give reviewers a file containing the audit entries between two dates.,We need to download historical security events for an external review.,missed_duplicate
+F000064,F000189,Custom symbols on overview cards would help me recognise them.,pls help: Let me choose an icon for each dashboard tile.,missed_duplicate
+F000064,F000204,Custom symbols on overview cards would help me recognise them.,pls help: Please allow personalising the little icons used on dashboard widgets.,missed_duplicate
+F000074,F000105,allow undoing the most recent bulk edit.,Please restore the previous values after an accidental mass update.,missed_duplicate
+F000074,F000373,allow undoing the most recent bulk edit.,"pls help: If a batch update changes the wrong items, we need a single rollback action.",missed_duplicate
+F000087,F000455,Notify us when we reach eighty percent of our monthly usage allowance.,pls help: Send a warning before our included quota runs out.,missed_duplicate
+F000092,F000220,pls help: We need to download historical security events for an external review.,Let our compliance team export the audit log for a selected date range.,missed_duplicate
+F000093,F000095,Copying report cells into a spreadsheet is slow. Add a CSV download.,We need a comma-separated export of the data behind a report.,missed_duplicate
+F000093,F000188,Copying report cells into a spreadsheet is slow. Add a CSV download.,pls help: We need a comma-separated export of the data behind a report.,missed_duplicate
+F000095,F000116,We need a comma-separated export of the data behind a report.,Let me download the report rows as a CSV file.,missed_duplicate
+F000095,F000162,We need a comma-separated export of the data behind a report.,pls help: Let me download the report rows as a CSV file.,missed_duplicate
+F000101,F000108,Let us select a batch of items and give all of them to another teammate.,pls help: Changing ownership one item at a time is tedious; support bulk reassignment.,missed_duplicate
+F000101,F000494,Let us select a batch of items and give all of them to another teammate.,pls help: Reassign the owner of many selected records in one action.,missed_duplicate
+F000102,F000228,Our security review needs twelve months of retained activity history.,the event history expires too soon; extend log retention to one year.,missed_duplicate
+F000105,F000147,Please restore the previous values after an accidental mass update.,pls help: Allow undoing the most recent bulk edit.,missed_duplicate
+F000105,F000373,Please restore the previous values after an accidental mass update.,"pls help: If a batch update changes the wrong items, we need a single rollback action.",missed_duplicate
+F000116,F000188,Let me download the report rows as a CSV file.,pls help: We need a comma-separated export of the data behind a report.,missed_duplicate
+F000128,F000228,pls help: Our security review needs twelve months of retained activity history.,the event history expires too soon; extend log retention to one year.,missed_duplicate
+F000147,F000373,pls help: Allow undoing the most recent bulk edit.,"pls help: If a batch update changes the wrong items, we need a single rollback action.",missed_duplicate
+F000150,F000220,We need to download historical security events for an external review.,Let our compliance team export the audit log for a selected date range.,missed_duplicate
+F000162,F000188,pls help: Let me download the report rows as a CSV file.,pls help: We need a comma-separated export of the data behind a report.,missed_duplicate
+F000171,F000322,Can we schedule a weekly usage summary to arrive in our inbox?,pls help: Email the usage report to our team automatically every Monday.,missed_duplicate
+F000189,F000243,pls help: Let me choose an icon for each dashboard tile.,pls help: Custom symbols on overview cards would help me recognise them.,missed_duplicate
+F000204,F000243,pls help: Please allow personalising the little icons used on dashboard widgets.,pls help: Custom symbols on overview cards would help me recognise them.,missed_duplicate
+F000212,F000369,pls help: The overview has too much padding. Offer a denser layout.,pls help: Add a compact view with less space between dashboard cards.,missed_duplicate
+F000212,F000442,pls help: The overview has too much padding. Offer a denser layout.,pls help: I want more tiles visible at once without scrolling; reduce dashboard spacing.,missed_duplicate
+F000322,F000344,pls help: Email the usage report to our team automatically every Monday.,pls help: Can we schedule a weekly usage summary to arrive in our inbox?,missed_duplicate

@@ -1,0 +1,56 @@
+{
+  "encoding_and_load_seconds": 2.645076208995306,
+  "metrics": {
+    "eligible_rows": 213,
+    "excluded_challenge_rows": 37,
+    "rows": {
+      "count": 213,
+      "duplicate_pairs": {
+        "f1": 0.6896969696969697,
+        "false_negative": 1024,
+        "false_positive": 0,
+        "pair_count": 22578,
+        "precision": 1.0,
+        "recall": 0.5263644773358002,
+        "true_positive": 1138
+      },
+      "nonidentical_duplicate_pairs": {
+        "f1": 0.5428571428571428,
+        "false_negative": 1024,
+        "false_positive": 0,
+        "pair_count": 22048,
+        "precision": 1.0,
+        "recall": 0.37254901960784315,
+        "true_positive": 608
+      },
+      "opportunity_groups": 11,
+      "theme_ari": 0.7592008826003311,
+      "theme_nmi": 0.8796666116021564
+    },
+    "total_rows": 250,
+    "unique_texts": {
+      "count": 56,
+      "duplicate_pairs": {
+        "f1": 0.5771812080536913,
+        "false_negative": 63,
+        "false_positive": 0,
+        "pair_count": 1540,
+        "precision": 1.0,
+        "recall": 0.4056603773584906,
+        "true_positive": 43
+      },
+      "nonidentical_duplicate_pairs": {
+        "f1": 0.5771812080536913,
+        "false_negative": 63,
+        "false_positive": 0,
+        "pair_count": 1540,
+        "precision": 1.0,
+        "recall": 0.4056603773584906,
+        "true_positive": 43
+      },
+      "opportunity_groups": 11,
+      "theme_ari": 0.7780979827089337,
+      "theme_nmi": 0.8898375092833302
+    }
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "purpose": "1500-row execution scale check; no new accuracy or independent holdout claim",
+  "rows": 1500,
+  "assigned_rows": 1500,
+  "opportunities": 27,
+  "seconds_including_model_load": 2.4469387919998553,
+  "input_sha256": "c077195af3079c5d6ac98b1017d58390f9bcde0fefb0408d61acf93dccaebd71",
+  "frozen_config_sha256": "dac06b82fee62e355fb8d63e712aa834da33084ba194abff956d85aeceb79101",
+  "truncated_rows": 0
+}

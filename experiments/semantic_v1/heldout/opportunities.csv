@@ -1,0 +1,13 @@
+opportunity_id,representative_feedback_id,representative_request,key_terms,request_count,distinct_customers,unique_wordings,duplicate_groups,minimum_similarity,review_note
+O-0acb8c5f0e0a,F000012,Changing ownership one item at a time is tedious; support bulk reassignment.,"reassign, owner, owner selected",34,24,9,5,0.2087469894545229,"Check shared need, scope and possible multiple intents."
+O-139758454d43,F000001,Let me choose an icon for each dashboard tile.,"dashboard, choose icon, dashboard tile",42,3,8,2,0.3433507013253853,"Check shared need, scope and possible multiple intents."
+O-1eab8755283e,F000011,We want employees to use the company SAML login for this workspace.,"saml, login, company",20,18,8,4,0.29692305239327127,"Check shared need, scope and possible multiple intents."
+O-279ed93651e3,F000373,"pls help: If a batch update changes the wrong items, we need a single rollback action.","update, allow undoing, bulk edit",22,16,5,3,0.3378158342327605,"Check shared need, scope and possible multiple intents."
+O-3a28fa1aa60d,F000128,pls help: Our security review needs twelve months of retained activity history.,"review, security, events",17,11,8,4,0.34590860062340417,"Check shared need, scope and possible multiple intents."
+O-3bd80d5e2acb,F000284,We need something better than this.,"better, need better, need",4,3,2,2,0.3018538609667174,"Check shared need, scope and possible multiple intents."
+O-3eb0ffdd0c57,F000054,The overview has too much padding. Offer a denser layout.,"overview, denser, denser layout",24,5,5,3,0.21157405632482312,"Check shared need, scope and possible multiple intents."
+O-48122f507bdc,F000048,Email the usage report to our team automatically every Monday.,"usage, email, report",36,24,9,4,0.32587008322114086,"Check shared need, scope and possible multiple intents."
+O-51ec5df907c5,F000055,Send a warning before our included quota runs out.,"quota, send, included",17,16,4,2,0.2754293606017443,"Check shared need, scope and possible multiple intents."
+O-7d40076d65ce,F000116,Let me download the report rows as a CSV file.,"report, csv, download",19,17,5,2,0.5041751332505522,"Check shared need, scope and possible multiple intents."
+O-ab9d64006b7e,F000392,pls help: Automatically sign people out after an administrator-defined idle period.,"idle, administrator, administrator defined",8,6,4,1,0.640195969741772,"Check shared need, scope and possible multiple intents."
+O-fe1bf4a1257e,F000297,"Something seems wrong, but I cannot reproduce it.","reproduce, wrong reproduce, behaviour",7,7,3,3,0.22058447768849093,"Check shared need, scope and possible multiple intents."
