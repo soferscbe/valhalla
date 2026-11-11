@@ -1,6 +1,6 @@
-# Deployment handoff — 9 November 2026
+# Deployment handoff — 10 November 2026
 
-**Status:** source published on `main`; fresh Linux installation and all 133 tests passed, including real-model inference and PostgreSQL. [Verified run](https://github.com/soferscbe/valhalla/actions/runs/42658653667), source commit `0a0b418853d733af4b560b69f15f8e6b54b5a7b0`. No public application URL or hosted persistence has been verified. GitHub repository: https://github.com/soferscbe/valhalla (public; initial README and original project history preserved).
+**Status:** source published on `main`; fresh Linux installation and all 133 tests passed, including real-model inference and PostgreSQL. [Verified run](https://github.com/soferscbe/valhalla/actions/runs/42658653667), source commit `0a0b418853d733af4b560b69f15f8e6b54b5a7b0`. Live app: https://valhalla-arkjg4bdxtfmm3d9z55dwu.streamlit.app/. Browser upload, validation, real grouping and scoring are verified on 500 synthetic records. Hosted PostgreSQL saving, rereading across reruns, strategy-context separation and two-workspace isolation are verified. Fresh-session recovery and restoration after an owner-reported app reboot are verified; the owner performed the reboot and the agent observed the restored original event. GitHub repository: https://github.com/soferscbe/valhalla (public; initial README and original project history preserved).
 
 ## Source and entrypoint
 
@@ -18,9 +18,15 @@ PRODUCTLENS_DATABASE_URL = "postgresql://USER:PASSWORD@HOST:5432/DATABASE?sslmod
 
 The example has placeholders only. URL-encode password punctuation. Prefer the database provider's documented TLS/pooler connection string; certificate-verifying modes are accepted. Never paste credentials into chat, commit them, or embed them in a public URL. `.streamlit/secrets.toml.example` is a template; real `.streamlit/secrets.toml` is ignored. The app role needs create-table/index and select/insert permissions in its dedicated schema. It must not be reused for unrelated confidential data.
 
-A managed PostgreSQL service such as Supabase can provide the database. Account creation, provider terms, project configuration and access remain to be completed if no database already exists. No paid service has been purchased. A missing/unreachable database leaves the scoring demo available but prevents saving reviews with an explicit error. Do not describe that state as a complete deployed MVP.
+A managed PostgreSQL service such as Supabase can provide the database. The student has set up accounts and a database connection; PostgreSQL read/write through the hosted app now succeeds. No paid service has been purchased. A missing/unreachable database leaves the scoring demo available but prevents saving reviews with an explicit error. Do not describe that state as a complete deployed MVP.
 
 Review workspace recovery keys isolate app queries but are bearer secrets, not authenticated identities. Keep the application limited to synthetic/nonconfidential demonstrations. Read `REVIEW_WORKFLOW.md` before sharing access. Retain both database backups and recovery keys; exporting history does not implement JSON re-import.
+
+### Supabase setup clarification — 10 November 2026
+
+For the dedicated ProductLens project, disable **Enable Data API** in the Data API integration/settings. This application uses server-side PostgreSQL directly and does not need Supabase REST/GraphQL access. Its automatically created SQL tables must not be exposed through a second access route that bypasses the application's workspace filtering. See [Supabase's guidance](https://supabase.com/docs/guides/api/securing-your-api). This provider setting has been instructed but not yet observed; include its confirmation in final hosted acceptance.
+
+In **Connect**, choose the **Session pooler** URI on port **5432** for IPv4 compatibility. Copy the provider's exact host and username, replace the password placeholder privately with the URL-encoded database password, and ensure the query contains `sslmode=require`. Put the full URI in Streamlit Advanced settings → Secrets under `PRODUCTLENS_DATABASE_URL`. Select Python **3.12**, repository `soferscbe/valhalla`, branch `main`, main file `deployment/streamlit_app.py`. Never substitute a Supabase API key for the database connection URI.
 
 ## Automated verification
 
@@ -35,6 +41,10 @@ PRODUCTLENS_OFFLINE=1 PRODUCTLENS_TEST_REAL_MODEL=1 python -m pytest -q
 To test an explicitly designated disposable PostgreSQL database, configure `PRODUCTLENS_TEST_POSTGRES_URL` privately and run `python -m pytest tests/test_reviews.py -q`. The integration test appends synthetic records in a newly generated workspace. Do not point it at a database containing unrelated data. No database URL should be printed in logs.
 
 ## Hosted acceptance — record actual results
+
+### If the build reports an unsupported `cp312` wheel
+
+The supplied 10 November build log selected Python **3.14.10**, while the deployment wheel is explicitly for Python **3.12** (`cp312`). Both uv and pip rejected that mismatch before application startup. Keep the validated dependencies unchanged. Streamlit Community Cloud requires deleting and recreating the app to change Python: first preserve its private Secrets and URL/settings, delete only the failed Streamlit app, then deploy the same repository/branch/entrypoint with **Advanced settings → Python 3.12**, restore Secrets and click Save before Deploy. The GitHub repository and Supabase project should remain in place. Rebooting the same deployment does not change its interpreter. See [official Python-version instructions](https://docs.streamlit.io/deploy/streamlit-community-cloud/manage-your-app/upgrade-python).
 
 1. Verify build logs, exact dependency versions and pinned model load; record the real URL and commit.
 2. Exercise sample, valid CSV/XLSX and invalid uploads. Run semantic grouping and inspect source rows; adjust weights and verify score contributions and fixed baselines.
@@ -52,3 +62,7 @@ Local SQLite restart tests do not satisfy step 4. Dependency resolution does not
 - [GitHub PostgreSQL service containers](https://docs.github.com/en/actions/tutorials/use-containerized-services/create-postgresql-service-containers), [checkout](https://github.com/actions/checkout) and [setup-python](https://github.com/actions/setup-python).
 
 References checked on 9 November 2026; provider access and actual deployment state must still be verified.
+
+## Hosted verification evidence — 10 November 2026
+
+The 500-record CSV uploaded and validated in the live browser (98 customers), grouped into 21 candidates and scored the 10 with sufficient inputs. A synthetic Defer review was saved to PostgreSQL (event prefix `4eb2bbec`, context prefix `29106999a6bc`). Changing account-value weight made it historical; restoring the original weight made it applicable again. A new workspace could not see the first event. Screenshots: `hosted-scoring-2026-11-10.jpg` and `hosted-review-2026-11-10.jpg`. A separate six-row fixture verified rejection of an empty review reason, fresh-session recovery, recovery after an owner-reported host reboot, and review/evidence JSON download. The restored original event is `df84da63-51d7-499c-9070-97c7bb378a5e`; screenshot `hosted-recovery-2026-11-10.jpg`. Provider Data API setting, hosted XLSX/error cases, score/assumption downloads and recovery-key download remain unverified. The saved review is automated test evidence, not a participant review.

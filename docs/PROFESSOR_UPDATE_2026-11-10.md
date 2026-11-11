@@ -1,34 +1,36 @@
 # ProductLens AI progress discussion
 
-Prepared on 9 November 2026 for discussion on **10 November 2026**. Review and adapt these speaking notes before using them. They are a factual progress briefing, not the final academic report.
+Updated on 10 November 2026 for discussion on **10 November 2026**. Review and adapt these speaking notes before using them. They are a factual progress briefing, not the final academic report.
 
 **Student:** Sofers Paul Durai Alexander · **Roll:** M24SME2042 · **Mentor:** Prof. Deepak Saxena
 
 **Approved title:** Design and Evaluation of an Explainable AI-Assisted Product Intelligence System for Evidence-Based SaaS Feature Prioritisation
 
+**10 November deployment update:** [Live app](https://valhalla-arkjg4bdxtfmm3d9z55dwu.streamlit.app/) now validates a 500-record CSV, groups it into 21 candidate opportunities and scores the 10 with sufficient inputs. An explicitly synthetic Defer review was saved to PostgreSQL and reread after reruns; a second workspace could not see it. A separate synthetic test review was recovered in a fresh browser session and after an owner-reported host reboot; its review/evidence JSON export was inspected.
+
 ## Suggested opening
 
-“The project now has a working local prototype that uploads and validates feedback, groups related requests using a pinned sentence-embedding model, and lets me inspect the original evidence and distinct customers behind each group. It now also calculates transparent priorities, shows score contributions, and lets me change strategy weights and compare baselines. I have reproducible synthetic datasets with 500 and 1,500 records. I have also completed an initial held-out evaluation of the semantic grouping component, with settings selected only on tuning data.
+“The project now has a working hosted prototype that uploads and validates feedback, groups related requests using a pinned sentence-embedding model, and lets me inspect the original evidence and distinct customers behind each group. It now also calculates transparent priorities, shows score contributions, and lets me change strategy weights and compare baselines. I have reproducible synthetic datasets with 500 and 1,500 records. I have also completed an initial held-out evaluation of the semantic grouping component, with settings selected only on tuning data.
 
-“The results show both useful matches and clear limitations: duplicate links have high precision in this synthetic test, but many paraphrases are missed and broad groups sometimes combine different needs. I have retained the errors and source evidence rather than treating the AI output as authoritative. The scoring engine and an initial 1,500-record ranking comparison now work locally. Some candidates remain unranked because their inputs are incomplete. Stored human decisions now work locally with reasons and exact evidence snapshots. The source is published on GitHub and all 133 tests pass on Linux with PostgreSQL; cloud deployment is still pending. My immediate priority is completing and deploying that workflow, followed by further robustness checks and the report.”
+“The results show both useful matches and clear limitations: duplicate links have high precision in this synthetic test, but many paraphrases are missed and broad groups sometimes combine different needs. I have retained the errors and source evidence rather than treating the AI output as authoritative. The scoring engine and an initial 1,500-record ranking comparison now work locally. Some candidates remain unranked because their inputs are incomplete. Stored human decisions now work in the hosted PostgreSQL backend with reasons and exact evidence snapshots. The source is published on GitHub and all 133 tests pass on Linux with PostgreSQL. My immediate priority is the remaining hosted input/export checks, further robustness evaluation and the report.”
 
 ## What can be demonstrated now
 
 | Area | Verified status |
 | --- | --- |
-| CSV/Excel intake | Working locally: validation, actionable errors, preview and customer/record counts |
+| CSV/Excel intake | Both tested locally; actual 500-row CSV upload and validation also verified in the hosted browser |
 | Synthetic evidence | Seeded 500- and 1,500-record bundles; stable account signals and separate truth labels |
-| Semantic grouping | Real MiniLM embeddings running locally, broad opportunities and stricter candidate duplicates |
+| Semantic grouping | Real MiniLM embeddings verified locally and hosted; 500-row hosted journey produced 21 candidate opportunities |
 | Explainability at grouping stage | Original requests, representative source sentence, extracted terms, request counts and distinct customers |
 | Research controls | Whole request families and customer accounts separated between tuning and evaluation; frozen configuration and source/model hashes |
 | Automated verification | All 133 tests passed on Linux with real-model inference and PostgreSQL on 9 November; locally 132 passed and the PostgreSQL test is skipped |
 | Published source | [GitHub repository](https://github.com/soferscbe/valhalla), original history preserved; [successful CI](https://github.com/soferscbe/valhalla/actions/runs/42658653667) |
 | Scoring and strategy simulation | Working locally: account deduplication, provisional effort, configurable weights, factor contributions and exports |
 | Vote/weighted/RICE-style ranking comparison | Initial 1,500-record descriptive run saved, with defined denominators and weight sensitivity |
-| Accept/defer/override history | Working locally with reasons, immutable snapshots, private recovery keys and restart tests; hosted persistence unverified |
-| Cloud deployment and full report | Not completed; there is no verified public URL |
+| Accept/defer/override history | Local workflow tested; hosted Defer save/read, strategy-context separation and two-workspace isolation verified; a separate recovery test also passed after an owner-reported host reboot |
+| Cloud deployment and full report | Hosted upload → grouping → scoring → saved review works; final acceptance checks and academic report remain incomplete |
 
-The current local demo is a completed component workflow, not the completed approved project. The local workflow now includes saved human review; the complete hosted project and final report remain unfinished.
+The core workflow is deployed and demonstrable, including a saved PostgreSQL review. Fresh-session and post-reboot recovery have also been checked. Remaining hosted edge cases, further evaluation and the final report are unfinished.
 
 ## Initial results to explain accurately
 
@@ -55,7 +57,7 @@ The formula is straightforward: normalise reach, resolved ARR, urgency and align
 
 ## Five-minute demonstration
 
-Before the meeting, from the project directory:
+For the hosted demonstration, open https://valhalla-arkjg4bdxtfmm3d9z55dwu.streamlit.app/. Use the local setup below as a fallback. From the project directory:
 
 ```bash
 source .venv/bin/activate
@@ -77,7 +79,7 @@ The built-in six-row sample is useful to explain the controls quickly, but is no
 
 ## Methodology and likely questions
 
-**Where does Design Science Research fit?** Problem definition is approved; artefact design, implementation and a local component demonstration are underway; semantic evaluation and initial ranking comparisons are measured. Deployment, hosted persistence, broader evaluation and communication in the final report remain incomplete.
+**Where does Design Science Research fit?** Problem definition is approved; artefact design, implementation and a local component demonstration are underway; semantic evaluation and initial ranking comparisons are measured. The hosted core workflow is demonstrated; remaining hosted edge cases, broader evaluation and communication in the final report remain incomplete.
 
 **What exactly does AI decide?** It represents feedback text and groups related requests. The separate deterministic engine calculates provisional rankings from explicit business factors and weights. AI does not select those weights or the final roadmap. Human accept/defer/override actions are stored separately with reasons and exact evidence snapshots.
 
@@ -101,7 +103,7 @@ The stated deadline remains **15 November 2026**. The remaining scope is substan
 | Target | Work |
 | --- | --- |
 | Completed locally on 9 November | Transparent scoring, distinct-account aggregation, contributions and initial baseline/weight comparisons |
-| 10–11 November | Cloud deployment and verification of hosted decision persistence; local stored review is implemented |
+| Completed on 10 November | Core cloud deployment, PostgreSQL save, workspace isolation and recovery after an owner-reported reboot |
 | 11–12 November | Hosted journey checks, data robustness and further evaluation/interpretation |
 | 12–14 November | Student-reviewed results/limitations, report assembly, IEEE citations, Annexure formatting and demo rehearsal |
 | 15 November | Final verification and submission by the prescribed deadline |
@@ -122,3 +124,7 @@ Protect deployment, evaluation and report time. Defer roadmap optimisation, conv
 - `docs/scoring-demo.png`: verified local score explanation.
 
 - `docs/REVIEW_WORKFLOW.md` and `docs/DEPLOYMENT.md`: local review behavior, exact cloud setup and remaining verification.
+
+- `docs/hosted-scoring-2026-11-10.jpg` and `docs/hosted-review-2026-11-10.jpg`: actual hosted browser evidence, using synthetic data only.
+
+- `docs/hosted-recovery-2026-11-10.jpg`: original saved test event restored after an owner-reported app reboot.

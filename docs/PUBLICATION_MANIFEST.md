@@ -83,3 +83,7 @@ Review `README.md`, `PROGRESS.md`, `PROJECT_CONTEXT.md`, and `docs/PROFESSOR_UPD
 - `tests/test_semantic_experiment.py`
 - `tests/test_semantic_integration.py`
 - `tests/test_synthetic.py`
+
+## Subsequent hosted verification evidence — 10 November 2026
+
+Added `docs/hosted-scoring-2026-11-10.jpg`, `docs/hosted-review-2026-11-10.jpg` and `docs/hosted-recovery-2026-11-10.jpg` alongside updated project/deployment/professor documentation. Screenshots contain synthetic feedback/results and an explicitly labelled automated test review. They contain no database credentials or recovery keys. The original 75-file checkpoint remains unchanged in history.

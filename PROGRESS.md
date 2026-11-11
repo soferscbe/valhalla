@@ -1,6 +1,6 @@
 # ProductLens AI progress
 
-**Current verified status — 9 November 2026:** upload → validation → real semantic grouping → deterministic scoring → saved human review works locally. Source and original Git history are published at https://github.com/soferscbe/valhalla. Fresh Linux/Python 3.12 installation, pinned model and PostgreSQL integration passed **all 133 tests with no skips**; [main CI run](https://github.com/soferscbe/valhalla/actions/runs/42658653667). Local suite: 132 passed, 1 PostgreSQL skip. No hosted application URL or managed database is configured; hosted persistence, broader data robustness and final report remain incomplete. Deadline is 15 November.
+**Current verified status — 10 November 2026:** [Hosted app](https://valhalla-arkjg4bdxtfmm3d9z55dwu.streamlit.app/) successfully loads, validates a 500-record synthetic CSV (98 customers), performs real semantic grouping (21 candidates) and transparent scoring (10 rankable candidates). Sample strategy-weight changes update priorities. Hosted PostgreSQL review saving, rereading after reruns, changed-strategy separation and a second workspace showing no first-workspace events are verified. Fresh-session recovery, review/evidence JSON download and restoration of the same saved event after an owner-reported host reboot are verified. Published source and original history are preserved. Prior Linux/PostgreSQL CI passed all 133 tests; local suite: 132 passed, 1 PostgreSQL skip. Broader robustness and final report remain incomplete. Deadline is 15 November.
 
 ## 5 November 2026 — project memory established before implementation
 
@@ -160,13 +160,60 @@ Regular main workflow run `42658653667`, job `129303916147`, completed successfu
 
 The previously skipped PostgreSQL round trip now ran successfully. This verifies the adapter against a disposable database, not managed-service TLS, hosted browser recovery or production durability. Local/browser evidence and frozen research results were not changed. The complete ranking experiment was not rerun on Linux, so bit-for-bit cross-platform research equivalence is not claimed. Updated README, project context, publication manifest, deployment guide and professor briefing with these boundaries. No further application code changes or unnecessary repeat tests were made.
 
+## 10 November 2026 — hosting account setup guidance
+
+The student confirmed that neither a Streamlit Community Cloud account nor a PostgreSQL provider account has been created and requested step-by-step guidance. Checked current official Streamlit signup/deployment documentation and Supabase pricing/connection documentation. Guide signup using the student's existing GitHub identity, a free Supabase project dedicated to ProductLens AI, and private credential entry. Account creation, database provisioning and app deployment have not yet been observed. Application code and verified CI results are unchanged.
+
+## 10 November 2026 — account setup reported complete; deployment guidance
+
+The student replied “Done” to the account/project setup steps. Treat readiness as student-reported, not independently verified; no live app URL or database connection has been observed. Checked the actual `PRODUCTLENS_DATABASE_URL` configuration and current provider documentation. Next instructions use Supabase's Session pooler (IPv4, port 5432), TLS via `sslmode=require`, and Streamlit's private Secrets field. Disable the unused Supabase Data API in this dedicated project so access stays through the application's workspace-scoped server queries. No credential was requested or received. Hosted build, save/restore and isolation checks remain outstanding.
+
+## 10 November 2026 — first hosted build failed: interpreter mismatch
+
+Inspected the student's supplied `logs-soferscbe-valhalla-main-deployment-streamlit_app.py-2026-11-10T07_27_41.305Z.txt` from Downloads as diagnostic data. At 07:25–07:26 UTC the deployment selected Python **3.14.10**. The pinned Torch CPU wheel is `cp312`, for Python **3.12**, so uv could not resolve it and pip reported an unsupported wheel. Failure occurred during dependency installation before app startup; this log says nothing about database credential validity. Target URL shown in the log: `https://q3qhjhjjbbuodvots5kjuu.streamlit.app/` (failed build, not a verified working app).
+
+Confirmed `.python-version` and deployment requirements specify 3.12, and prior Linux CI passed all 133 tests using Python 3.12.16. Official Streamlit documentation requires deleting/recreating the app to change Python, retaining its settings and private secrets beforehand. No application/dependency change is justified by this log. Updated deployment troubleshooting; the student must select 3.12 in Advanced settings for the replacement deployment. No hosted deletion or recreation has been performed by the agent.
+
+Local smoke check after diagnosis: `PRODUCTLENS_OFFLINE=1 .venv/bin/python -m pytest tests/test_reviews_app.py::test_cloud_entrypoint_runs_same_app_with_storage_guard -q` → **1 passed in 1.87s**. `git diff --check` passed. Only documentation changed; no redundant full-suite run or claim of a repaired hosted build.
+
+## 10 November 2026 — replacement deployment reported; new URL needed
+
+The student reported redeployment complete. Opened the previously logged URL `https://q3qhjhjjbbuodvots5kjuu.streamlit.app/` in the in-app browser. It redirected to Streamlit's “You do not have access to this app or it does not exist” page. This does not establish that the replacement app failed; its URL may have changed or access may be restricted. No replacement app tab was available in the in-app browser. Request the new public app URL to continue live verification. No app interaction, database write or hosted success is claimed.
+
+## 10 November 2026 — hosted analysis verified; database secret missing
+
+Opened the user-supplied replacement URL `https://valhalla-arkjg4bdxtfmm3d9z55dwu.streamlit.app/` in the in-app browser. ProductLens loaded publicly. The six-row sample validated, real semantic grouping produced two candidates, and both scored. Changing Account value weight from 30 to 100 changed priority order and the selected keyboard candidate's score from 6.557 to 3.935; fixed weighted benefit remained 32.783. Uploaded `data/generated/v1.0.0_seed42_n500/inputs/feedback.csv` through the browser file chooser: 500 records, 98 customers, explicit missing-value warnings (25 urgency, 25 alignment, 75 effort), validation passed. Grouping produced 21 candidates; 10 had sufficient scoring inputs. Screenshot: `docs/hosted-scoring-2026-11-10.jpg`. These are hosted functional checks, not a new research evaluation or measured human-workflow improvement.
+
+The review section displayed “Cloud review storage needs PRODUCTLENS_DATABASE_URL. Local-file fallback is disabled.” No database connection/save was attempted by the app after that guard; no review data was written. Asked the student to configure the secret privately; they requested help locating Secrets. Current official route: Streamlit workspace → app overflow menu → Settings → Secrets → Save. The screenshot contains synthetic results only. No credentials or recovery keys were read or saved by the agent. The replacement runtime version has not been independently read from its build logs, though startup and real inference now succeed. Supabase Data API setting, CSV/XLSX error cases, exports, managed-database isolation and recovery after a host restart remain unverified.
+
+## 10 November 2026 — hosted PostgreSQL save and workspace isolation verified
+
+After the student saved the secret privately, the hosted review section displayed “Review storage: PostgreSQL database.” Created an isolated automated-test workspace, with the existing 500-record synthetic upload and default weights. Database history loaded successfully. Saved a Defer decision for `O-7d40076d65ce`, reviewer “Automated deployment check”, with a reason explicitly stating synthetic deployment verification, not participant evidence or a roadmap commitment. UI confirmed event prefix `4eb2bbec`; stored timestamp `2026-11-10T07:45:15.620619+00:00`; evidence/strategy context prefix `29106999a6bc`. Saved table and context count showed one event. Screenshot: `docs/hosted-review-2026-11-10.jpg`.
+
+Changing Account value weight 30 → 31 produced context `fdcd4db86b58`, zero applicable events and one historical event. Restoring weight 30 reread the saved event as applicable. Starting a second workspace showed zero events, verifying isolation for these two application workspaces. No second review was saved. The test recovery-key input was redacted by browser inspection; no usable key was retained, printed, written to project files or used for restoration. Fresh-session recovery and an actual host restart were not tested and must not be inferred from reruns. The first synthetic test event remains in its database workspace; no real reviewer or study participant is implied.
+
+Updated project context, README, deployment guide and professor briefing. App code, dependency pins, frozen model settings and research outputs are unchanged; no redundant full test rerun was needed. Screenshots show only synthetic results. Supabase Data API disablement remains student-instructed but unobserved. Native hosted CSV/XLSX error cases and export downloads remain to be checked. The hosted workflow now reaches a saved review, with durability verification still outstanding.
+
+## 10 November 2026 — fresh-session recovery and evidence export passed
+
+Created a separate synthetic QA workspace using a cryptographically generated 256-bit key held only in the browser automation session's memory and entered through the normal recovery field. This avoids exposing or recovering any user's credentials. Verified an empty review reason is rejected with “Provide a reason between 1 and 4,000 characters” and no event is saved. Then saved a clearly labelled automated Accept test on the six-row built-in sample, event `df84da63-51d7-499c-9070-97c7bb378a5e`, timestamp `2026-11-10T13:29:18.594611+00:00`, context `7e7ac71267ca219a5bd86bb1dc3386453d27b79e28211c9e76daf30b1d3f9d46`.
+
+Reloaded the browser, selected the same sample and rebuilt its grouping/scoring. The fresh session required a recovery key. Entering the test key restored the original saved event, timestamp and applicable-context count. Downloaded the actual review/evidence export through the UI to the user's Downloads directory; inspected JSON format `productlens-review-export-v1`, one event and one matching snapshot with six source rows, six assignments, five accounts and two scored opportunities. Export contains no recovery key or database credentials. Screenshot: `docs/hosted-recovery-2026-11-10.jpg`. This is an automated functional test, not a participant study. Recovery-key download itself has not been tested.
+
+Requested an owner-dashboard Reboot app to test process restart durability. The student reported “Reboot completed”; the subsequent check passed as recorded below. No credential or recovery key has been published or written to project files.
+
+## 10 November 2026 — saved review recovered after owner-reported host reboot
+
+After the student confirmed using Streamlit Reboot app, reloaded the browser and observed a fresh app startup. Selected the same six-row synthetic sample, reran the pinned semantic grouping and default scoring, and entered the ephemeral QA recovery key. PostgreSQL returned the original event `df84da63-51d7-499c-9070-97c7bb378a5e`, original `2026-11-10T13:29:18.594611+00:00` timestamp, reason and context `7e7ac71267ca219a5bd86bb1dc3386453d27b79e28211c9e76daf30b1d3f9d46`. History and applicable-event count both showed the one original saved review; no duplicate was written. Updated screenshot `docs/hosted-recovery-2026-11-10.jpg` shows the restored event ID. The owner performed/reported the reboot; the agent verified the subsequent startup and restored data, not the hosting control-plane logs. Cleared the ephemeral test key from automation memory after verification.
+
+Core hosted acceptance now reaches upload → validation → real grouping → transparent scoring → PostgreSQL save → isolated workspace → fresh-session recovery → recovery after the owner-reported reboot. The 500-row uploaded dataset and separate six-row recovery fixture are both explicitly synthetic. Review/evidence JSON download was inspected and contains one event with all six supporting source rows, no recovery key or database credentials. Remaining limits: Supabase Data API setting is not independently observed; actual hosted XLSX/invalid-upload cases, score downloads and recovery-key download are not yet checked. No new research performance numbers, real-user observations or business outcomes are claimed. Application code, dependencies and frozen experiments are unchanged; previous 133-test Linux result remains the relevant code validation. Documentation whitespace validation passed.
+
 ## Recommended next task
 
-Configure Streamlit hosting and a dedicated PostgreSQL database, then verify the live workflow.
+Finish the remaining hosted acceptance checks and freeze the demonstration evidence before further research/report work.
 
 Acceptance checks:
 
-1. Establish the student's Streamlit Community Cloud and PostgreSQL provider access; enter credentials only in private secrets, never chat or Git. Account readiness has been asked and is awaiting the student's reply.
-2. Deploy `soferscbe/valhalla`, branch `main`, entrypoint `deployment/streamlit_app.py`, Python 3.12, with a dedicated TLS PostgreSQL connection; verify model loading and cloud mode.
-3. Record the live URL and verify upload → grouping → scoring → saved review, workspace isolation and recovery after a hosted restart. No SQLite fallback is permitted.
-4. Update the professor briefing and progress with actual hosted results and remaining limitations. Until these checks pass, describe the app as locally working and Linux/PG tested, not deployed.
+1. Confirm the dedicated Supabase project's Data API is disabled, preserving the application's intended access boundary.
+2. Verify a hosted XLSX upload, one invalid upload, score/assumption downloads and the private recovery-key download; inspect exported values without publishing keys or credentials.
+3. Update the demo checklist and professor briefing with the final verified limits, preserving frozen research results and reserving time for data robustness, report preparation and the 15 November deadline.
