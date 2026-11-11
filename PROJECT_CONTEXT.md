@@ -1,6 +1,6 @@
 # ProductLens AI project context
 
-Last updated: 10 November 2026 (Asia/Kolkata). Read with `AGENTS.md` and `PROGRESS.md` at the start of every session.
+Last updated: 11 November 2026 (Asia/Kolkata). Read with `AGENTS.md` and `PROGRESS.md` at the start of every session.
 
 ## Objective and authority
 
@@ -61,7 +61,7 @@ Stretch only after core: roadmap capacity/dependencies, counterfactuals, convers
 
 ## Evaluation plan and limitations
 
-Semantic metrics are defined and measured under `docs/SEMANTIC_PROTOCOL.md`; actual results are in `docs/SEMANTIC_RESULTS.md` and `experiments/semantic_v1/`. Initial ranking metrics are defined in `docs/SCORING_PROTOCOL.md` and measured in `experiments/ranking_v1/`: common-candidate Spearman/Top-K agreement, rank changes, ±20% weight sensitivity, distinct-customer segment representation, exact evidence traceability and local processing time. Data perturbation remains planned. Record seeds, dataset version/split, model/version, thresholds, weights, runtime configuration, outputs and failures. Handle ties and undefined metrics explicitly.
+Semantic metrics are defined and measured under `docs/SEMANTIC_PROTOCOL.md`; actual results are in `docs/SEMANTIC_RESULTS.md` and `experiments/semantic_v1/`. Initial ranking metrics are defined in `docs/SCORING_PROTOCOL.md` and measured in `experiments/ranking_v1/`: common-candidate Spearman/Top-K agreement, rank changes, ±20% weight sensitivity, distinct-customer segment representation, exact evidence traceability and local processing time. Data perturbation is now measured in docs/ROBUSTNESS_RESULTS.md. Record seeds, dataset version/split, model/version, thresholds, weights, runtime configuration, outputs and failures. Handle ties and undefined metrics explicitly.
 
 Synthetic labels must be stored separately and excluded from model inputs. Avoid tuning on evaluation labels or distributing identical templates across splits without documenting leakage risk. Synthetic validity limits generalisation; ranking agreement does not prove business optimality, and timing alone does not prove PM productivity. Product Manager review is optional and only reportable if actually conducted. No claim of a universally correct ranking.
 
@@ -78,7 +78,7 @@ Observed limitations: missed paraphrases, some false duplicate links, overlappin
 - Initial scoring formula, opportunity aggregation and missing-factor treatment are implemented and documented; semantic model/settings are frozen. These business proxies and authored synthetic signals still require mentor/engineering scrutiny; real-world validity is unverified.
 - Semantic grouping of ambiguous/overlapping feedback needs candid evaluation; simple synthetic templates can inflate measured quality.
 - Report sample front matter needs correction with confirmed wording; institutional permission for any particular AI-assisted submission practice has not been inferred.
-- Student plans to discuss progress with professors on 10 November 2026. Briefing: `docs/PROFESSOR_UPDATE_2026-11-10.md`. Deadline remains 15 November; decision history, deployment, further robustness evaluation and final report are still on the critical path. The full approved scope is at risk unless implementation stays minimal.
+- Student confirms on 11 November that no professor discussion has occurred yet. Briefing: `docs/PROFESSOR_UPDATE_2026-11-10.md`. Deadline remains 15 November; decision history, deployment, further robustness evaluation and final report are still on the critical path. The full approved scope is at risk unless implementation stays minimal.
 
 ## Decision-engine milestone — 9 November 2026
 
@@ -101,3 +101,13 @@ Live URL: https://valhalla-arkjg4bdxtfmm3d9z55dwu.streamlit.app/. Browser checks
 A separate six-row synthetic recovery test rejected an empty reason, then saved event `df84da63-51d7-499c-9070-97c7bb378a5e`. Its original ID, timestamp, reason and evidence context were restored in a fresh browser session and again after the student reported rebooting the host. The reboot itself was owner-reported; app startup and restored data were directly observed. Its downloaded review JSON contains one event, six source rows, six assignments, five accounts and two opportunities, without credentials or a recovery key. The QA recovery key was generated and held only in transient automation memory, then cleared.
 
 Screenshots: `docs/hosted-scoring-2026-11-10.jpg`, `docs/hosted-review-2026-11-10.jpg`, `docs/hosted-recovery-2026-11-10.jpg`. Remaining hosted checks: XLSX and invalid uploads, score/assumption downloads, recovery-key download and confirmation of the provider Data API setting. The core deployed workflow is demonstrable; final acceptance edge cases, broader robustness evaluation and the academic report remain incomplete. Automated test reviews are not participant-study evidence.
+
+## Completion work — 11 November 2026
+
+Owner confirms Supabase Data API is disabled. Hosted six-row XLSX validation/grouping/scoring and numeric score CSV download passed. Assumptions download timed out; hosted invalid-input/private-key downloads remain unverified. No app code or frozen model settings changed.
+
+Five predeclared data robustness diagnostics reproduced the original ranking baseline. Row permutation and twenty repeated account records preserved scores; ±20% ARR perturbations preserved ranking; subgroup effort perturbations retained 4/5 Top-5. Removing ARR for 30/293 accounts left only 1/27 scorable candidates, down from 14, with no original Top-5 retained. This is a material completeness limitation; common Top-K 1/1 is not robustness. See ROBUSTNESS_PROTOCOL/RESULTS and experiments/robustness_v1. Local full suite now 135 passed/1 PostgreSQL skip (9.40s); earlier Linux CI 133 passed before the new three experiment tests.
+
+Report preparation follows the actual AI-content screening rule: local student completion template with verified tables, references and student-supplied personal motivation/reflection. It is not submission-ready; abstract, critical literature synthesis, detailed interpretation/conclusions and declaration remain student-owned. No mentor permission or final endorsement is inferred. Demo/viva guide and reference reading notes are prepared.
+
+Later on 11 November, the hosted missing-feedback_text CSV was rejected with the explicit required-column error and no grouping action. Invalid-input acceptance passed; assumptions and private-key download checks remain open.

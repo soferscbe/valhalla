@@ -17,3 +17,10 @@ data/generated/
 data/private/
 *.sqlite3-*
 *.sqlite-*
+
+# Generated academic drafts and private student writing stay local.
+report/*.docx
+report/*.pdf
+report/student_reflection.md
+# Synthetic transformed inputs are regenerated; hashes and outcomes are retained.
+experiments/robustness_v1/*/input.csv

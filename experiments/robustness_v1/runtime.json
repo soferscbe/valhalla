@@ -1,0 +1,18 @@
+{
+  "python": "3.12.14",
+  "platform": "macOS-26.7.1-arm64-arm-64bit",
+  "packages": {
+    "pandas": "2.2.3",
+    "numpy": "2.3.5",
+    "scikit-learn": "1.9.1",
+    "sentence-transformers": "6.2.0",
+    "torch": "2.15.0"
+  },
+  "device": "cpu",
+  "model_revision": "1110a243fdf4706b3f48f1d95db1a4f5529b4d41",
+  "protocol_seeds": [
+    20261111,
+    20261112,
+    20261113
+  ]
+}

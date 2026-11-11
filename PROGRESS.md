@@ -208,12 +208,32 @@ After the student confirmed using Streamlit Reboot app, reloaded the browser and
 
 Core hosted acceptance now reaches upload → validation → real grouping → transparent scoring → PostgreSQL save → isolated workspace → fresh-session recovery → recovery after the owner-reported reboot. The 500-row uploaded dataset and separate six-row recovery fixture are both explicitly synthetic. Review/evidence JSON download was inspected and contains one event with all six supporting source rows, no recovery key or database credentials. Remaining limits: Supabase Data API setting is not independently observed; actual hosted XLSX/invalid-upload cases, score downloads and recovery-key download are not yet checked. No new research performance numbers, real-user observations or business outcomes are claimed. Application code, dependencies and frozen experiments are unchanged; previous 133-test Linux result remains the relevant code validation. Documentation whitespace validation passed.
 
+## 11 November 2026 — final acceptance extension and research protocol
+
+Read standing memory and all three authoritative academic documents again. Cloud-entrypoint smoke passed: 1 test in 1.96s. Git tracked state initially clean at 7f6b45709e14cba058a7272fa718b496c10dbd2a. Owner confirms Supabase Data API disabled and no mentor discussion yet. Hosted XLSX generated from the six-row sample validated six records/five customers, grouped two candidates and scored both. Actual productlens_scores.csv downloaded and verified both priority values equal benefit/effort within 1e-10. The assumptions-download attempt timed out and reset browser automation; subsequent page inspection showed a session without analysis results. Do not claim that download passed. Hosted invalid-upload and recovery-key-download checks remain open; core recovery evidence remains valid from 10 November.
+
+Declared docs/ROBUSTNESS_PROTOCOL.md before execution; no new robustness results yet. Updated DECISIONS.md. Academic integrity requirement means report support will preserve student authorship and clearly identify unfinished interpretation/declaration.
+
+## 11 November 2026 — robustness and report preparation complete as bounded deliverables
+
+Executed five predeclared diagnostics with the real pinned model. Baseline reproduced ranking_v1 assignment IDs and all four score methods within 1e-10. Permutation and repeated-account checks passed. ARR uncertainty kept the full ranking; effort uncertainty retained 4/5 Top-5 (Spearman 0.9912088). Account-level missing ARR for 30/293 customers reduced scorable candidates from 14 to one, with no original Top-5 retained; common agreement 1/1 is explicitly not a robustness claim. Outputs, hashes, changes and runtime are in experiments/robustness_v1. Transformed inputs remain generated/local, reproducible from the runner. Initial reference comparison failed on pandas string/object dtype before writing outputs; corrected storage-dtype comparison without altering values/scenarios. Three new tests passed. Full suite: PRODUCTLENS_OFFLINE=1 PRODUCTLENS_TEST_REAL_MODEL=1 .venv/bin/python -m pytest -q → **135 passed, 1 skipped in 9.40s** (local PostgreSQL unavailable). Earlier Linux/PG CI passed 133 before these added tests; new CI not yet recorded.
+
+Created ROBUSTNESS_RESULTS, VERIFIED_REFERENCES, DEMO_AND_VIVA and report/README. Verified sources against ACL, author-hosted DSR paper, model card, Intercom and scikit-learn docs. Updated README, context, decisions, professor briefing and deployment limits. Student supplied three paragraphs of personal motivation/reflection; retained verbatim in the local report, excluded from public Git. The local 12-page DOCX completion template and PDF preview use Annexure geometry/font/heading/page conventions, include actual results and clearly marked unfinished student writing. Rendered via bundled LibreOffice and inspected every page; corrected stretched metadata and table column widths. Final unchanged pages matched prior inspected PNGs byte-for-byte; all changed pages inspected again. Source Annexure stayed unchanged. Template build initially required adding missing source heading styles and fixing an empty-center helper; final build/render succeeded. No final report or declaration is claimed complete and nothing was sent to the mentor.
+
+## 11 November 2026 — public checkpoint approval blocked
+
+Prepared a 29-file publication manifest for research code/tests, synthetic outputs and generic preparation documentation. The single large create-tree request failed transport. A smaller first-batch request was then rejected by automatic approval review: the earlier explicit public approval covered the original 75 files, not this new 29-file payload. No new GitHub commit or branch update was made. Remote main remains 7f6b45709e14cba058a7272fa718b496c10dbd2a. Report DOCX/PDF, personal student reflection, academic attachments and generated transformed inputs are excluded. The student subsequently explicitly approved publication of the new 29-file checkpoint. Publication may now proceed. Local files remain intact.
+
+## 11 November 2026 — hosted invalid upload rejected
+
+Uploaded a synthetic CSV containing feedback_id/customer_id but no feedback_text. The live app displayed “Validation failed” and “Missing required columns: feedback_text”, showed the raw correction preview and exposed no grouping action. This remaining input check passed. Assumptions/private-key download paths remain unverified after the earlier browser timeout.
+
 ## Recommended next task
 
-Finish the remaining hosted acceptance checks and freeze the demonstration evidence before further research/report work.
+Complete the student-authored academic report and final submission review using the prepared evidence package.
 
 Acceptance checks:
-
-1. Confirm the dedicated Supabase project's Data API is disabled, preserving the application's intended access boundary.
-2. Verify a hosted XLSX upload, one invalid upload, score/assumption downloads and the private recovery-key download; inspect exported values without publishing keys or credentials.
-3. Update the demo checklist and professor briefing with the final verified limits, preserving frozen research results and reserving time for data robustness, report preparation and the 15 November deadline.
+1. Student/mentor confirms AI-assistance and declaration requirements; finish abstract, critical literature synthesis, interpretation and conclusions in the student's own words.
+2. Replace all template prompts, update contents/citations and visually verify the final PDF before student signature/submission by 15 November.
+3. Rehearse the demo/viva and resolve remaining hosted assumptions-download and private-key-download checks; retain honest limitations if browser checks remain blocked.
+4. Confirm the new research checkpoint/CI status in GitHub and preserve original frozen experimental evidence.

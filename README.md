@@ -142,3 +142,13 @@ Cloud entrypoint: **`deployment/streamlit_app.py`**, Python **3.12**, with adjac
 ## Research boundaries
 
 The accepted proposal remains authoritative. Initial evaluation measures semantic grouping and compares transparent ranking with vote-based, fixed-weight and RICE-style baselines. Further data robustness checks and any participant study remain pending. Synthetic data, model/split configuration and measured outcomes must be documented. Ranking agreement is not proof of a universally correct business priority. Do not fabricate business impact, participant reviews, experiments or references.
+
+## Final evaluation and report preparation
+
+Data perturbation results: [protocol](docs/ROBUSTNESS_PROTOCOL.md), [results](docs/ROBUSTNESS_RESULTS.md). The missing-ARR stress reduced scorable candidates from 14 to 1; do not confuse common-candidate agreement with usable coverage.
+
+```bash
+PRODUCTLENS_OFFLINE=1 python -m productlens.robustness_experiment --input data/generated/v1.0.0_seed42_n1500/inputs/feedback.csv --reference experiments/ranking_v1 --output experiments/robustness_reproduction
+```
+
+[Demo/viva guide](docs/DEMO_AND_VIVA.md), [verified reading list](docs/VERIFIED_REFERENCES.md), and [report completion instructions](report/README.md). The report template is a local student-completion aid, not a final academic submission. Local suite after the experiment addition: 135 passed, one PostgreSQL integration skip; prior Linux/PG CI passed 133 tests.

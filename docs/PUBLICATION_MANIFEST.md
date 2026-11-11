@@ -87,3 +87,36 @@ Review `README.md`, `PROGRESS.md`, `PROJECT_CONTEXT.md`, and `docs/PROFESSOR_UPD
 ## Subsequent hosted verification evidence — 10 November 2026
 
 Added `docs/hosted-scoring-2026-11-10.jpg`, `docs/hosted-review-2026-11-10.jpg` and `docs/hosted-recovery-2026-11-10.jpg` alongside updated project/deployment/professor documentation. Screenshots contain synthetic feedback/results and an explicitly labelled automated test review. They contain no database credentials or recovery keys. The original 75-file checkpoint remains unchanged in history.
+
+## 11 November research and preparation checkpoint
+
+Adds reproducible synthetic robustness outputs, runner/tests, generic demo/reference notes and report-builder source. Generated report documents, student reflection, academic source attachments and transformed synthetic input copies are excluded. No credentials or recovery keys are included.
+
+- `.gitignore`
+- `DECISIONS.md`
+- `PROGRESS.md`
+- `PROJECT_CONTEXT.md`
+- `README.md`
+- `docs/DEMO_AND_VIVA.md`
+- `docs/DEPLOYMENT.md`
+- `docs/PROFESSOR_UPDATE_2026-11-10.md`
+- `docs/ROBUSTNESS_PROTOCOL.md`
+- `docs/ROBUSTNESS_RESULTS.md`
+- `docs/VERIFIED_REFERENCES.md`
+- `experiments/robustness_v1/arr_missing/assignments.csv`
+- `experiments/robustness_v1/arr_missing/scores.csv`
+- `experiments/robustness_v1/arr_uncertainty/assignments.csv`
+- `experiments/robustness_v1/arr_uncertainty/scores.csv`
+- `experiments/robustness_v1/base_scores.csv`
+- `experiments/robustness_v1/effort_uncertainty/assignments.csv`
+- `experiments/robustness_v1/effort_uncertainty/scores.csv`
+- `experiments/robustness_v1/permuted/assignments.csv`
+- `experiments/robustness_v1/permuted/scores.csv`
+- `experiments/robustness_v1/repeated_account/assignments.csv`
+- `experiments/robustness_v1/repeated_account/scores.csv`
+- `experiments/robustness_v1/report.json`
+- `experiments/robustness_v1/runtime.json`
+- `productlens/robustness_experiment.py`
+- `report/README.md`
+- `tests/test_robustness_experiment.py`
+- `tools/build_report_template.py`

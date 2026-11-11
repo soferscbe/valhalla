@@ -66,3 +66,9 @@ References checked on 9 November 2026; provider access and actual deployment sta
 ## Hosted verification evidence — 10 November 2026
 
 The 500-record CSV uploaded and validated in the live browser (98 customers), grouped into 21 candidates and scored the 10 with sufficient inputs. A synthetic Defer review was saved to PostgreSQL (event prefix `4eb2bbec`, context prefix `29106999a6bc`). Changing account-value weight made it historical; restoring the original weight made it applicable again. A new workspace could not see the first event. Screenshots: `hosted-scoring-2026-11-10.jpg` and `hosted-review-2026-11-10.jpg`. A separate six-row fixture verified rejection of an empty review reason, fresh-session recovery, recovery after an owner-reported host reboot, and review/evidence JSON download. The restored original event is `df84da63-51d7-499c-9070-97c7bb378a5e`; screenshot `hosted-recovery-2026-11-10.jpg`. Provider Data API setting, hosted XLSX/error cases, score/assumption downloads and recovery-key download remain unverified. The saved review is automated test evidence, not a participant review.
+
+### 11 November acceptance update
+
+The owner confirms the dedicated Supabase Data API is disabled. Hosted sample XLSX passed six records/five customers, real grouping and scoring for two candidates. The downloaded score CSV reproduces benefit/effort within 1e-10. An assumptions-download attempt timed out and browser automation reset; that path, invalid uploads and recovery-key download remain unverified on the host. Existing PostgreSQL recovery evidence is unchanged.
+
+Later on 11 November, the hosted missing-feedback_text CSV was rejected with the explicit required-column error and no grouping action. Invalid-input acceptance passed; assumptions and private-key download checks remain open.

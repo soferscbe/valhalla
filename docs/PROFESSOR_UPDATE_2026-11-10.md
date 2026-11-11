@@ -128,3 +128,7 @@ Protect deployment, evaluation and report time. Defer roadmap optimisation, conv
 - `docs/hosted-scoring-2026-11-10.jpg` and `docs/hosted-review-2026-11-10.jpg`: actual hosted browser evidence, using synthetic data only.
 
 - `docs/hosted-recovery-2026-11-10.jpg`: original saved test event restored after an owner-reported app reboot.
+
+## Update on 11 November
+
+No mentor discussion has occurred yet, according to the student. The hosted workflow remains demonstrated; owner confirms Data API disabled. XLSX and score export passed. Five new data robustness scenarios are complete: repeated-account invariance passed; effort uncertainty retained 4/5 Top-5; masking ARR for 30 accounts reduced score coverage from 14 candidates to one. This limitation should be discussed explicitly. Local tests: 135 passed/one PostgreSQL skip. Report template and demo/viva preparation are available locally; student interpretation, critical literature synthesis, abstract and declaration remain unfinished.
