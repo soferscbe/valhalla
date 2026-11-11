@@ -111,3 +111,5 @@ Five predeclared data robustness diagnostics reproduced the original ranking bas
 Report preparation follows the actual AI-content screening rule: local student completion template with verified tables, references and student-supplied personal motivation/reflection. It is not submission-ready; abstract, critical literature synthesis, detailed interpretation/conclusions and declaration remain student-owned. No mentor permission or final endorsement is inferred. Demo/viva guide and reference reading notes are prepared.
 
 Later on 11 November, the hosted missing-feedback_text CSV was rejected with the explicit required-column error and no grouping action. Invalid-input acceptance passed; assumptions and private-key download checks remain open.
+
+The explicitly approved new 29-file research checkpoint is published at 2f5b595bf2c847e17f41add18ecf189bbcc76bcd. New Linux CI run 43051455407 passed **136 tests with no skips in 24.83 seconds**, including the real model and PostgreSQL. The local report template/preview is 12 pages with student reflection preserved verbatim; substantive student-authored report completion remains required.

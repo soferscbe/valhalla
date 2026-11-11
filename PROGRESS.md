@@ -228,6 +228,12 @@ Prepared a 29-file publication manifest for research code/tests, synthetic outpu
 
 Uploaded a synthetic CSV containing feedback_id/customer_id but no feedback_text. The live app displayed “Validation failed” and “Missing required columns: feedback_text”, showed the raw correction preview and exposed no grouping action. This remaining input check passed. Assumptions/private-key download paths remain unverified after the earlier browser timeout.
 
+## 11 November 2026 — approved checkpoint published and Linux verification passed
+
+Published the explicitly approved 29-file checkpoint at **2f5b595bf2c847e17f41add18ecf189bbcc76bcd**, tree 65b0d72bc7774d310d12961f48cbe954b274cb9e. Local staged tree matched exactly before content-preserving HEAD synchronization; tracked working tree was clean. New main CI run **43051455407**, job **130629429738**, passed **136 tests in 24.83s**, no skips, including real pinned-model inference and disposable PostgreSQL. Fresh pinned Linux dependency installation and dependency consistency checks passed. Run: https://github.com/soferscbe/valhalla/actions/runs/43051455407. Public publication is no longer blocked. Student report draft and personal reflection remain local and excluded from Git.
+
+Final local report preview is 12 pages. Last revision records hosted invalid-upload success; all other pages matched previously inspected images byte-for-byte, and the changed page was visually rechecked. Geometry and inclusion of the student's exact three paragraphs passed structural checks. File: report/ProductLens_Student_Report_Template.docx; matching PDF: report/ProductLens_Student_Report_Template_Preview.pdf. These are completion aids, not a final report; no submission or signature occurred.
+
 ## Recommended next task
 
 Complete the student-authored academic report and final submission review using the prepared evidence package.
@@ -236,4 +242,4 @@ Acceptance checks:
 1. Student/mentor confirms AI-assistance and declaration requirements; finish abstract, critical literature synthesis, interpretation and conclusions in the student's own words.
 2. Replace all template prompts, update contents/citations and visually verify the final PDF before student signature/submission by 15 November.
 3. Rehearse the demo/viva and resolve remaining hosted assumptions-download and private-key-download checks; retain honest limitations if browser checks remain blocked.
-4. Confirm the new research checkpoint/CI status in GitHub and preserve original frozen experimental evidence.
+4. Preserve the published checkpoint and original frozen experimental evidence when assembling the final submission.
